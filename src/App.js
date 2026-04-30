@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home      from './pages/Home';
+import About     from './pages/About';
+import Products  from './pages/Products';
+import Services  from './pages/Services';
+import Vacancies from './pages/Vacancies';
+import Delivery  from './pages/Delivery';
+import Contacts  from './pages/Contacts';
 
-function App() {
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
+function AppInner() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ScrollToTop />
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/"          element={<Home />}      />
+          <Route path="/about"     element={<About />}     />
+          <Route path="/products"  element={<Products />}  />
+          <Route path="/services"  element={<Services />}  />
+          <Route path="/vacancies" element={<Vacancies />} />
+          <Route path="/delivery"  element={<Delivery />}  />
+          <Route path="/contacts"  element={<Contacts />}  />
+        </Routes>
+      </main>
+      <Footer />
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppInner />
+    </BrowserRouter>
+  );
+}
