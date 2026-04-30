@@ -182,7 +182,7 @@ const en = {
     ctaTitle:   'Ready to place an order?',
     ctaSub:     'Contact us for a delivery cost estimate',
     ctaBtn1:    'Leave a Request',
-    ctaBtn2:    '+375 (2354) 4-06-95',
+    ctaBtn2:    '+375 (33) 324-20-10',
     methods: [
       { emoji:'🚛', title:'Road transport',     desc:'Delivery by our own heavy-truck fleet. Belarus and CIS countries.', features:['Belarus and CIS','Heavy-duty trucks','Full documentation','Cargo insurance','GPS tracking'] },
       { emoji:'🏭', title:'Self-collection',    desc:'Pick up from our warehouse in Elsk. Easy access and loading equipment.', features:['Elsk, Kochishchansky tract 6k1','Mon–Fri 8:00–17:00','Amkodor loader','Weighing & docs on site'] },

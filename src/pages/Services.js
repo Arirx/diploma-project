@@ -67,7 +67,7 @@ export default function Services() {
             </div>
             <div className="cta-banner__actions">
               <Link to="/contacts" className="btn btn--white btn--lg">{t('services.ctaBtn1')}</Link>
-              <a href="tel:+375235440695" className="btn btn--outline btn--lg">{t('services.ctaBtn2')}</a>
+              <a href="tel:+375333242010" className="btn btn--outline btn--lg">{t('services.ctaBtn2')}</a>
             </div>
           </div>
         </div>
