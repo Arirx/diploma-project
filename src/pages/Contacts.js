@@ -3,8 +3,8 @@ import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
 import { STAFF } from '../data/staff';
 
-/* Yandex Maps: Ельск, Кочищанский тракт 6/1 */
-const YANDEX_EMBED = 'https://yandex.ru/map-widget/v1/?ll=29.165411%2C51.808541&z=15&pt=29.165411%2C51.808541,pm2orgm&l=map&lang=ru_RU';
+/* Yandex Maps: г. Ельск, ул. Кочищанский тракт 6/1 */
+const YANDEX_EMBED = 'https://yandex.ru/map-widget/v1/?ll=29.165411%2C51.808541&z=16&pt=29.165411%2C51.808541,pm2orgm~ООО%20Ельсклес~г.%20Ельск%2C%20Кочищанский%20тракт%206%2F1&l=map&lang=ru_RU';
 const YANDEX_ROUTE = 'https://yandex.ru/maps/?rtext=~51.808541,29.165411&rtt=auto';
 
 function ContactForm() {
@@ -134,10 +134,10 @@ export default function Contacts() {
 
                 <div style={{ display:'flex', gap:10, marginTop:8, flexWrap:'wrap' }}>
                   <a href="https://wa.me/375333242010" target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--sm">
-                    💬 WhatsApp
+                    WhatsApp
                   </a>
                   <a href="https://www.instagram.com/elskles.by" target="_blank" rel="noopener noreferrer" className="btn btn--outline btn--sm">
-                    📷 Instagram
+                    Instagram
                   </a>
                 </div>
               </div>
@@ -159,16 +159,14 @@ export default function Contacts() {
             <h2 className="section-title">{t('contacts.staffTitle')}</h2>
           </div>
           <div className="staff-grid">
-            {STAFF.map(person => (
-              <div className="staff-card fade-up" key={person.id}>
-                <div className="staff-card__avatar" style={{ background: person.color }}>
-                  {person.initials}
-                </div>
+            {STAFF.map((person, i) => (
+              <div className="staff-card fade-up" key={person.id} style={{ transitionDelay:`${i*0.05}s` }}>
+                <div className="staff-card__accent" style={{ background: person.color }} />
                 <div className="staff-card__info">
                   <div className="staff-card__name">{person.name}</div>
                   <div className="staff-card__pos">{l(person.position)}</div>
-                  <a className="staff-card__phone" href={`tel:${person.phone.replace(/[\s\-()]/g,'')}`}>
-                    📞 {person.phone}
+                  <a className="staff-card__phone" href={`tel:${person.phone.replace(/[\s\-()+]/g,'')}`}>
+                    {person.phone}
                   </a>
                 </div>
               </div>
@@ -196,7 +194,7 @@ export default function Contacts() {
               rel="noopener noreferrer"
               className="btn btn--primary"
             >
-              🗺️ {t('common.route')}
+              {t('common.route')}
             </a>
           </div>
         </div>

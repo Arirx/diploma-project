@@ -41,15 +41,15 @@ export default function Vacancies() {
                       <div className="vacancy-card__title">{l(v.title)}</div>
                       <div className="vacancy-card__meta">
                         <span className="vacancy-card__badge">
-                          <span className="vacancy-card__badge-icon">📍</span>
+                          <span className="vacancy-card__badge-dot" />
                           {l(v.location)}
                         </span>
                         <span className="vacancy-card__badge">
-                          <span className="vacancy-card__badge-icon">⏱️</span>
+                          <span className="vacancy-card__badge-dot" />
                           {l(v.type)}
                         </span>
                         <span className="vacancy-card__badge">
-                          <span className="vacancy-card__badge-icon">🏷️</span>
+                          <span className="vacancy-card__badge-dot" />
                           {l(v.category)}
                         </span>
                       </div>

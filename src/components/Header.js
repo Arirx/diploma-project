@@ -44,14 +44,7 @@ export default function Header() {
             className="header__logo-img"
             onError={e => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'flex'; }}
           />
-          {/* Fallback if image fails */}
           <div className="header__logo-mark" style={{ display: 'none' }}>🌲</div>
-          <div className="header__logo-text">
-            <div className="header__logo-name">ЕЛЬСКЛЕС</div>
-            <div className="header__logo-sub">
-              {lang === 'en' ? 'Timber · Belarus' : lang === 'by' ? 'Піламатэрыялы · Беларусь' : 'Пиломатериалы · Беларусь'}
-            </div>
-          </div>
         </Link>
 
         {/* Nav */}

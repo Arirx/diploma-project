@@ -220,7 +220,9 @@ export default function Home() {
                 {features.map((f, i) => (
                   <div className="about-teaser__feature" key={i}>
                     <div className="about-teaser__feature-icon">
-                      {['🔥','🚛','🌍','✅'][i]}
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M3 9L7 13L15 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
                     </div>
                     <div>
                       <div className="about-teaser__feature-title">{f.title}</div>
@@ -314,14 +316,14 @@ export default function Home() {
               <p className="section-subtitle">{t('home.contactSub')}</p>
               <div style={{ marginTop:36 }}>
                 {[
-                  { icon:'📞', label:'Телефон', val:'+375 (2354) 4-06-95' },
-                  { icon:'📱', label:'Мобильный',val:'+375 33 324-20-10' },
-                  { icon:'✉️', label:'Email',    val:'elskles.info@gmail.com' },
-                  { icon:'🕐', label:'Работаем', val:'Пн–Пт: 8:00–17:00' },
-                  { icon:'📍', label:'Адрес',    val:'г. Ельск, Кочищанский тракт 6/1' },
-                ].map(({ icon, label, val }) => (
+                  { label:'Телефон',  val:'+375 (2354) 4-06-95' },
+                  { label:'Мобильный',val:'+375 33 324-20-10' },
+                  { label:'Email',    val:'elskles.info@gmail.com' },
+                  { label:'Работаем', val:'Пн–Пт: 8:00–17:00' },
+                  { label:'Адрес',    val:'г. Ельск, Кочищанский тракт 6/1' },
+                ].map(({ label, val }) => (
                   <div className="contact-form-info__item" key={label}>
-                    <div className="contact-form-info__icon">{icon}</div>
+                    <div className="contact-form-info__dot" />
                     <div>
                       <div className="contact-form-info__label">{label}</div>
                       <div className="contact-form-info__value">{val}</div>

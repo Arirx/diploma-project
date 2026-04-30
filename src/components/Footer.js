@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
-const LOGO_URL = 'https://elskles.by/img/200x0/ac9d8977deb65139ef9783d66ee93739.jpg';
-
 export default function Footer() {
   const { t } = useLanguage();
   const year = new Date().getFullYear();
@@ -15,16 +13,8 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="footer__logo">
-              <img
-                src={LOGO_URL}
-                alt="Ельсклес"
-                className="footer__logo-img"
-                onError={e => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'block'; }}
-              />
-              <div className="footer__logo-fallback" style={{ display: 'none' }}>
-                <div className="footer__logo-mark">🌲</div>
-                <div className="footer__logo-name">ЕЛЬСКЛЕС</div>
-              </div>
+              <div className="footer__logo-mark">🌲</div>
+              <div className="footer__logo-name">ЕЛЬСКЛЕС</div>
             </div>
             <p className="footer__desc">{t('footer.desc')}</p>
             <div className="footer__social">
@@ -74,23 +64,23 @@ export default function Footer() {
           <div>
             <div className="footer__col-title">{t('footer.contact')}</div>
             <div className="footer__contact-item">
-              <span className="footer__contact-icon">📍</span>
-              <span>г. Ельск, Кочищанский тракт 6/1, 247792</span>
+              <span className="footer__contact-label">Адрес</span>
+              <span>г. Ельск, Кочищанский тракт 6/1</span>
             </div>
             <div className="footer__contact-item">
-              <span className="footer__contact-icon">📞</span>
-              <span>+375 (2354) 4-06-95</span>
+              <span className="footer__contact-label">Тел.</span>
+              <a href="tel:+375235440695">+375 (2354) 4-06-95</a>
             </div>
             <div className="footer__contact-item">
-              <span className="footer__contact-icon">📱</span>
-              <span>+375 33 324-20-10</span>
+              <span className="footer__contact-label">Моб.</span>
+              <a href="tel:+375333242010">+375 33 324-20-10</a>
             </div>
             <div className="footer__contact-item">
-              <span className="footer__contact-icon">✉️</span>
-              <span>elskles.info@gmail.com</span>
+              <span className="footer__contact-label">Email</span>
+              <a href="mailto:elskles.info@gmail.com">elskles.info@gmail.com</a>
             </div>
             <div className="footer__contact-item">
-              <span className="footer__contact-icon">🕐</span>
+              <span className="footer__contact-label">Режим</span>
               <span>{t('footer.hours')}</span>
             </div>
           </div>
