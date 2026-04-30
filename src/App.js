@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import Home      from './pages/Home';
 import About     from './pages/About';
 import Products  from './pages/Products';
@@ -33,14 +35,17 @@ function AppInner() {
         </Routes>
       </main>
       <Footer />
+      <ScrollToTopButton />
     </>
   );
 }
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppInner />
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <AppInner />
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }

@@ -1,118 +1,95 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useLanguage } from '../context/LanguageContext';
+import useFadeUp from '../hooks/useFadeUp';
+import { STAFF } from '../data/staff';
 
-function useFadeUp() {
-  useEffect(() => {
-    const els = document.querySelectorAll('.fade-up');
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.1 }
-    );
-    els.forEach(el => io.observe(el));
-    return () => io.disconnect();
-  });
-}
+/* Yandex Maps: Ельск, Кочищанский тракт 6/1 */
+const YANDEX_EMBED = 'https://yandex.ru/map-widget/v1/?ll=29.165411%2C51.808541&z=15&pt=29.165411%2C51.808541,pm2orgm&l=map&lang=ru_RU';
+const YANDEX_ROUTE = 'https://yandex.ru/maps/?rtext=~51.808541,29.165411&rtt=auto';
 
 function ContactForm() {
+  const { t } = useLanguage();
   const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: '', phone: '', email: '', subject: '', message: '' });
+  const [form, setForm] = useState({ name:'', phone:'', email:'', subject:'', message:'' });
+  const onChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const handleSubmit = e => {
-    e.preventDefault();
-    setSent(true);
-  };
-
-  if (sent) return (
-    <div className="form__success" style={{ padding: 32 }}>
-      ✅ Ваше сообщение отправлено! Мы свяжемся с вами в рабочее время (Пн–Пт 8:00–17:00).
-    </div>
-  );
+  if (sent) return <div className="form__success" style={{ padding:32 }}>{t('form.success')}</div>;
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <h3 style={{ fontFamily: 'var(--font-head)', fontSize: 20, fontWeight: 800, marginBottom: 20 }}>
-        Написать нам
+    <form className="form" onSubmit={e => { e.preventDefault(); setSent(true); }}>
+      <h3 style={{ fontFamily:'var(--font-head)', fontSize:20, fontWeight:800, marginBottom:20 }}>
+        {t('nav.write')}
       </h3>
       <div className="form__row">
         <div className="form__group">
-          <label className="form__label">Имя *</label>
-          <input className="form__input" name="name" value={form.name} onChange={handleChange} placeholder="Иван Иванов" required />
+          <label className="form__label">{t('form.name')}</label>
+          <input className="form__input" name="name" value={form.name} onChange={onChange} placeholder={t('form.namePh')} required />
         </div>
         <div className="form__group">
-          <label className="form__label">Телефон *</label>
-          <input className="form__input" name="phone" value={form.phone} onChange={handleChange} placeholder="+375 XX XXX-XX-XX" required />
+          <label className="form__label">{t('form.phone')}</label>
+          <input className="form__input" name="phone" value={form.phone} onChange={onChange} placeholder={t('form.phonePh')} required />
         </div>
       </div>
       <div className="form__group">
-        <label className="form__label">Email</label>
-        <input className="form__input" type="email" name="email" value={form.email} onChange={handleChange} placeholder="example@mail.com" />
+        <label className="form__label">{t('form.email')}</label>
+        <input className="form__input" type="email" name="email" value={form.email} onChange={onChange} placeholder={t('form.emailPh')} />
       </div>
       <div className="form__group">
-        <label className="form__label">Тема</label>
-        <select className="form__select" name="subject" value={form.subject} onChange={handleChange}>
-          <option value="">Выберите тему</option>
-          <option>Запрос на пиломатериалы</option>
-          <option>Услуги по транспортировке</option>
-          <option>Сотрудничество / экспорт</option>
-          <option>Вакансии</option>
-          <option>Другое</option>
+        <label className="form__label">{t('form.subject')}</label>
+        <select className="form__select" name="subject" value={form.subject} onChange={onChange}>
+          <option value="">{t('form.subjectPh')}</option>
+          {t('form.topics').map(topic => <option key={topic}>{topic}</option>)}
         </select>
       </div>
       <div className="form__group">
-        <label className="form__label">Сообщение *</label>
-        <textarea className="form__textarea" name="message" value={form.message} onChange={handleChange} placeholder="Опишите ваш запрос подробнее..." rows={5} required />
+        <label className="form__label">{t('form.message')} *</label>
+        <textarea className="form__textarea" name="message" value={form.message} onChange={onChange} placeholder={t('form.messagePh')} rows={5} required />
       </div>
-      <p className="form__note">Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.</p>
-      <button type="submit" className="btn btn--primary">
-        Отправить сообщение →
-      </button>
+      <p className="form__note">{t('form.note')}</p>
+      <button type="submit" className="btn btn--primary">{t('common.sendMessage')}</button>
     </form>
   );
 }
 
 export default function Contacts() {
+  const { t, l } = useLanguage();
   useFadeUp();
 
   return (
     <>
-      {/* ── PAGE HERO ──────────────────────────── */}
+      {/* ── PAGE HERO ──────────────────────── */}
       <section className="page-hero">
         <div className="container">
-          <div className="section-label">Контакты</div>
-          <h1 className="section-title section-title--white">Свяжитесь с нами</h1>
-          <p className="section-subtitle section-subtitle--white">
-            Мы отвечаем на звонки и письма в рабочее время: Пн–Пт с&nbsp;8:00 до&nbsp;17:00
-          </p>
+          <div className="section-label">{t('contacts.heroLabel')}</div>
+          <h1 className="section-title section-title--white">{t('contacts.heroTitle')}</h1>
+          <p className="section-subtitle section-subtitle--white">{t('contacts.heroSub')}</p>
         </div>
       </section>
 
-      {/* ── КОНТАКТНАЯ ИНФОРМАЦИЯ + ФОРМА ──────── */}
+      {/* ── КОНТАКТЫ + ФОРМА ───────────────── */}
       <section className="section">
         <div className="container">
           <div className="contacts-grid">
-
-            {/* Карточка с контактами */}
+            {/* Info card */}
             <div className="fade-up">
               <div className="contact-info-card">
-                <div className="contact-info-card__title">Контактная информация</div>
+                <div className="contact-info-card__title">{t('contacts.infoTitle')}</div>
 
                 <div className="contact-info-row">
                   <div className="contact-info-row__icon">📍</div>
                   <div>
-                    <div className="contact-info-row__label">Адрес</div>
-                    <div className="contact-info-row__value">
-                      г. Ельск, Кочищанский тракт 6/1,<br />247792, Гомельская область, Беларусь
-                    </div>
+                    <div className="contact-info-row__label">{t('contacts.address')}</div>
+                    <div className="contact-info-row__value">{t('contacts.addressVal')}</div>
                   </div>
                 </div>
 
                 <div className="contact-info-row">
                   <div className="contact-info-row__icon">📞</div>
                   <div>
-                    <div className="contact-info-row__label">Телефон</div>
+                    <div className="contact-info-row__label">{t('contacts.phone')}</div>
                     <div className="contact-info-row__value">
                       <a href="tel:+375235440695">+375 (2354) 4-06-95</a><br />
-                      <a href="tel:+375235443328">+375 (2354) 4-43-28</a> (бухгалтерия)
+                      <a href="tel:+375235443328">+375 (2354) 4-43-28</a>
                     </div>
                   </div>
                 </div>
@@ -120,7 +97,7 @@ export default function Contacts() {
                 <div className="contact-info-row">
                   <div className="contact-info-row__icon">📱</div>
                   <div>
-                    <div className="contact-info-row__label">Мобильный / WhatsApp</div>
+                    <div className="contact-info-row__label">{t('contacts.mobile')}</div>
                     <div className="contact-info-row__value">
                       <a href="tel:+375333242010">+375 33 324-20-10</a><br />
                       <a href="tel:+375296072307">+375 29 607-23-07</a><br />
@@ -142,64 +119,85 @@ export default function Contacts() {
                 <div className="contact-info-row">
                   <div className="contact-info-row__icon">🕐</div>
                   <div>
-                    <div className="contact-info-row__label">Режим работы</div>
-                    <div className="contact-info-row__value">
-                      Понедельник – Пятница: 8:00 – 17:00<br />
-                      Суббота, Воскресенье: выходной
-                    </div>
+                    <div className="contact-info-row__label">{t('contacts.workHours')}</div>
+                    <div className="contact-info-row__value">{t('contacts.workHoursVal')}</div>
                   </div>
                 </div>
 
                 <div className="contact-info-row">
                   <div className="contact-info-row__icon">🏢</div>
                   <div>
-                    <div className="contact-info-row__label">Реквизиты</div>
-                    <div className="contact-info-row__value">
-                      ООО «Ельсклес»<br />
-                      УНП 490333750
-                    </div>
+                    <div className="contact-info-row__label">{t('contacts.details')}</div>
+                    <div className="contact-info-row__value">ООО «Ельсклес»<br />УНП 490333750</div>
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
-                  <a
-                    href="https://wa.me/375333242010"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn--primary btn--sm"
-                  >
+                <div style={{ display:'flex', gap:10, marginTop:8, flexWrap:'wrap' }}>
+                  <a href="https://wa.me/375333242010" target="_blank" rel="noopener noreferrer" className="btn btn--primary btn--sm">
                     💬 WhatsApp
                   </a>
-                  <a
-                    href="https://www.instagram.com/elskles.by"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn--outline btn--sm"
-                  >
+                  <a href="https://www.instagram.com/elskles.by" target="_blank" rel="noopener noreferrer" className="btn btn--outline btn--sm">
                     📷 Instagram
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* Форма + карта */}
-            <div className="fade-up" style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+            {/* Form */}
+            <div className="fade-up">
               <ContactForm />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── КАРТА ───────────────────────────────── */}
+      {/* ── СОТРУДНИКИ ──────────────────────── */}
+      <section className="section section--gray">
+        <div className="container">
+          <div className="section-header fade-up">
+            <div className="section-label">{t('contacts.staffTitle')}</div>
+            <h2 className="section-title">{t('contacts.staffTitle')}</h2>
+          </div>
+          <div className="staff-grid">
+            {STAFF.map(person => (
+              <div className="staff-card fade-up" key={person.id}>
+                <div className="staff-card__avatar" style={{ background: person.color }}>
+                  {person.initials}
+                </div>
+                <div className="staff-card__info">
+                  <div className="staff-card__name">{person.name}</div>
+                  <div className="staff-card__pos">{l(person.position)}</div>
+                  <a className="staff-card__phone" href={`tel:${person.phone.replace(/[\s\-()]/g,'')}`}>
+                    📞 {person.phone}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ЯНДЕКС КАРТА ────────────────────── */}
       <section className="section--sm">
         <div className="container">
+          <p className="map-hint fade-up">{t('contacts.mapHint')}</p>
           <div className="map-embed fade-up">
             <iframe
-              title="Карта расположения ООО Ельсклес"
-              src="https://maps.google.com/maps?q=Ельск+Гомельская+область+Беларусь&output=embed&z=13"
+              title="Карта ООО Ельсклес"
+              src={YANDEX_EMBED}
               allowFullScreen
               loading="lazy"
             />
+          </div>
+          <div style={{ marginTop:16, textAlign:'center' }} className="fade-up">
+            <a
+              href={YANDEX_ROUTE}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn--primary"
+            >
+              🗺️ {t('common.route')}
+            </a>
           </div>
         </div>
       </section>

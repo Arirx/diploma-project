@@ -1,241 +1,263 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
+import { useLanguage } from '../context/LanguageContext';
+import useFadeUp from '../hooks/useFadeUp';
+import {
+  PARTNER_COUNTRIES,
+  PARTNER_COUNTRY_IDS,
+  HOME_COUNTRY_ID,
+  COUNTRY_NAMES,
+  COUNTRY_COORDS,
+} from '../data/countries';
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
 
-/* ISO 3166-1 numeric codes */
-const PARTNER_IDS = new Set(['643','156','792','364','031','268','860','762']);
-const HOME_ID = '112'; /* Belarus */
-
-const PARTNER_COUNTRIES = [
-  { name: 'Беларусь', flag: '🇧🇾', home: true,  coords: [27.9534, 53.7098] },
-  { name: 'Россия',   flag: '🇷🇺', home: false, coords: [37.6173, 55.7558] },
-  { name: 'Китай',    flag: '🇨🇳', home: false, coords: [116.407, 39.904]  },
-  { name: 'Турция',   flag: '🇹🇷', home: false, coords: [32.866, 39.933]   },
-  { name: 'Иран',     flag: '🇮🇷', home: false, coords: [51.389, 35.689]   },
-  { name: 'Азербайджан', flag: '🇦🇿', home: false, coords: [49.867, 40.409] },
-  { name: 'Грузия',   flag: '🇬🇪', home: false, coords: [44.793, 41.694]   },
-  { name: 'Узбекистан',flag: '🇺🇿', home: false, coords: [69.240, 41.299]  },
-  { name: 'Таджикистан',flag:'🇹🇯', home: false, coords: [68.773, 38.559]  },
-];
-
-const PRODUCTS_PREVIEW = [
-  { emoji: '🪵', cat: 'Хвойные породы', title: 'Пиломатериалы обрезные', desc: 'Обрезные доски из сосны. Широкий выбор сечений и длин под любые задачи.' },
-  { emoji: '📐', cat: 'Строительные',   title: 'Брус строительный',       desc: 'Клееный и цельный брус для каркасного и деревянного строительства.' },
-  { emoji: '🚂', cat: 'Специальные',    title: 'Шпала деревянная',         desc: 'Шпалы из сосны для железнодорожного и промышленного применения.' },
-  { emoji: '🔥', cat: 'Топливо',        title: 'Уголь древесный',          desc: 'Высококалорийный уголь из лиственных пород, фасовка на заказ.' },
-];
-
-const SERVICES_PREVIEW = [
-  { emoji: '🔥', title: 'Сушка пиломатериалов',  desc: 'Промышленные камеры итальянского производства. Сушка до заданной влажности.' },
-  { emoji: '🚛', title: 'Транспортировка',         desc: 'Доставка лесоматериалов собственным автотранспортом по Беларуси и СНГ.' },
-  { emoji: '🏗️', title: 'Погрузочные работы',      desc: 'Погрузка-выгрузка техникой Амкодор. Быстро, точно, без повреждений.' },
-  { emoji: '🌲', title: 'Заготовка древесины',     desc: 'Заготовка и трелёвка лесоматериалов в лесных массивах Гомельской области.' },
-  { emoji: '🪨', title: 'Щепа и опилки',           desc: 'Технологическая щепа и опилки — отличное биотопливо и сырьё.' },
-];
-
-function useFadeUp() {
-  useEffect(() => {
-    const els = document.querySelectorAll('.fade-up');
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
-    );
-    els.forEach(el => io.observe(el));
-    return () => io.disconnect();
-  });
-}
-
+/* ── Contact form ─────────────────────────────────────────── */
 function ContactForm() {
-  const [sent, setSent] = useState(false);
-  const [form, setForm] = useState({ name: '', phone: '', email: '', subject: '', message: '' });
+  const { t } = useLanguage();
+  const [sent, setSent]   = useState(false);
+  const [form, setForm]   = useState({ name:'', phone:'', email:'', subject:'', message:'' });
+  const onChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const handleSubmit = e => {
-    e.preventDefault();
-    setSent(true);
-  };
-
-  if (sent) return (
-    <div className="form__success">
-      ✅ Сообщение отправлено! Мы свяжемся с вами в рабочее время (Пн–Пт 8:00–17:00).
-    </div>
-  );
+  if (sent) return <div className="form__success">{t('form.success')}</div>;
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
+    <form className="form" onSubmit={e => { e.preventDefault(); setSent(true); }}>
       <div className="form__row">
         <div className="form__group">
-          <label className="form__label">Имя *</label>
-          <input className="form__input" name="name" value={form.name} onChange={handleChange} placeholder="Иван Иванов" required />
+          <label className="form__label">{t('form.name')}</label>
+          <input className="form__input" name="name" value={form.name} onChange={onChange} placeholder={t('form.namePh')} required />
         </div>
         <div className="form__group">
-          <label className="form__label">Телефон *</label>
-          <input className="form__input" name="phone" value={form.phone} onChange={handleChange} placeholder="+375 XX XXX-XX-XX" required />
+          <label className="form__label">{t('form.phone')}</label>
+          <input className="form__input" name="phone" value={form.phone} onChange={onChange} placeholder={t('form.phonePh')} required />
         </div>
       </div>
       <div className="form__group">
-        <label className="form__label">Email</label>
-        <input className="form__input" type="email" name="email" value={form.email} onChange={handleChange} placeholder="example@mail.com" />
+        <label className="form__label">{t('form.email')}</label>
+        <input className="form__input" type="email" name="email" value={form.email} onChange={onChange} placeholder={t('form.emailPh')} />
       </div>
       <div className="form__group">
-        <label className="form__label">Тема обращения</label>
-        <select className="form__select" name="subject" value={form.subject} onChange={handleChange}>
-          <option value="">Выберите тему</option>
-          <option>Запрос на пиломатериалы</option>
-          <option>Услуги по транспортировке</option>
-          <option>Сотрудничество / экспорт</option>
-          <option>Вакансии</option>
-          <option>Другое</option>
+        <label className="form__label">{t('form.subject')}</label>
+        <select className="form__select" name="subject" value={form.subject} onChange={onChange}>
+          <option value="">{t('form.subjectPh')}</option>
+          {t('form.topics').map(topic => <option key={topic}>{topic}</option>)}
         </select>
       </div>
       <div className="form__group">
-        <label className="form__label">Сообщение</label>
-        <textarea className="form__textarea" name="message" value={form.message} onChange={handleChange} placeholder="Опишите ваш запрос..." rows={4} />
+        <label className="form__label">{t('form.message')}</label>
+        <textarea className="form__textarea" name="message" value={form.message} onChange={onChange} placeholder={t('form.messagePh')} rows={4} />
       </div>
-      <p className="form__note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
-      <button type="submit" className="btn btn--primary">
-        Отправить сообщение →
-      </button>
+      <p className="form__note">{t('form.note')}</p>
+      <button type="submit" className="btn btn--primary">{t('form.sendMessage') ?? t('common.sendMessage')}</button>
     </form>
   );
 }
 
-export default function Home() {
-  useFadeUp();
+/* ── World Map with tooltip ───────────────────────────────── */
+function ExportMap() {
+  const { t, lang } = useLanguage();
+  const [tooltip, setTooltip] = useState({ visible: false, content: '', x: 0, y: 0 });
+
+  const getCountryName = (id) => {
+    const numId = Number(id);
+    return COUNTRY_NAMES[numId]?.[lang] ?? COUNTRY_NAMES[numId]?.ru ?? null;
+  };
+
+  const onEnter = (geo, e) => {
+    const name = getCountryName(geo.id);
+    if (name) setTooltip({ visible: true, content: name, x: e.clientX, y: e.clientY });
+  };
+  const onMove  = (e) => setTooltip(p => ({ ...p, x: e.clientX, y: e.clientY }));
+  const onLeave = ()  => setTooltip(p => ({ ...p, visible: false }));
 
   return (
     <>
-      {/* ── HERO ─────────────────────────────────── */}
+      {tooltip.visible && (
+        <div className="map-tooltip" style={{ left: tooltip.x + 14, top: tooltip.y - 10 }}>
+          {tooltip.content}
+        </div>
+      )}
+      <div className="map-wrapper fade-up">
+        <ComposableMap
+          projection="geoMercator"
+          projectionConfig={{ scale: 155, center: [58, 43] }}
+          style={{ width: '100%', height: 'auto', background: '#1C1C1C', display: 'block' }}
+        >
+          <Geographies geography={GEO_URL}>
+            {({ geographies }) =>
+              geographies.map(geo => {
+                const numId = Number(geo.id);
+                const isHome    = numId === HOME_COUNTRY_ID;
+                const isPartner = PARTNER_COUNTRY_IDS.has(numId);
+                return (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    fill={isHome ? '#4CAF50' : isPartner ? '#F07500' : '#2A2A2A'}
+                    stroke="#1C1C1C"
+                    strokeWidth={0.5}
+                    onMouseEnter={e => onEnter(geo, e)}
+                    onMouseMove={onMove}
+                    onMouseLeave={onLeave}
+                    style={{
+                      default: { outline: 'none' },
+                      hover:   { fill: isHome ? '#66BB6A' : isPartner ? '#FF8C00' : '#383838', outline: 'none', cursor: 'default' },
+                      pressed: { outline: 'none' },
+                    }}
+                  />
+                );
+              })
+            }
+          </Geographies>
+          {PARTNER_COUNTRIES.map(({ id, name, home }) => {
+            const coords = COUNTRY_COORDS[id];
+            if (!coords) return null;
+            return (
+              <Marker key={id} coordinates={coords}>
+                <circle r={5} fill={home ? '#4CAF50' : '#F07500'} stroke="white" strokeWidth={1.5} />
+              </Marker>
+            );
+          })}
+        </ComposableMap>
+      </div>
+
+      {/* Country grid */}
+      <div className="countries-grid fade-up">
+        {PARTNER_COUNTRIES.map(({ id, name, flag, home }) => (
+          <div className={`country-card${home ? ' country-card--home' : ''}`} key={id}>
+            <span className="country-card__flag">{flag}</span>
+            <span className="country-card__name">{name[lang] ?? name.ru}</span>
+            <span className="country-card__role">
+              {home ? t('home.homeCountry') : t('home.partner')}
+            </span>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+/* ── Page ─────────────────────────────────────────────────── */
+export default function Home() {
+  const { t } = useLanguage();
+  useFadeUp();
+
+  const PRODUCTS_PREVIEW = [
+    { emoji:'🪵', cat: t('home.productsLabel'), title:'Пиломатериалы обрезные', desc:'Обрезные доски из сосны. Широкий выбор сечений и длин.' },
+    { emoji:'📐', cat: t('home.productsLabel'), title:'Брус строительный',       desc:'Брус из сосны для строительства и перекрытий.' },
+    { emoji:'🚂', cat: t('home.productsLabel'), title:'Шпала деревянная',         desc:'Шпалы из сосны для железнодорожного применения.' },
+    { emoji:'🔥', cat: t('home.productsLabel'), title:'Уголь древесный',          desc:'Высококалорийный уголь из лиственных пород.' },
+  ];
+
+  const SERVICES_PREVIEW = [
+    { emoji:'🔥', title:'Сушка пиломатериалов',  desc:'Промышленные камеры итальянского производства.' },
+    { emoji:'🚛', title:'Транспортировка',         desc:'Доставка лесоматериалов по Беларуси и СНГ.' },
+    { emoji:'🏗️', title:'Погрузочные работы',     desc:'Погрузка-выгрузка техникой Амкодор.' },
+    { emoji:'🌲', title:'Заготовка древесины',     desc:'Заготовка и трелёвка в Гомельской области.' },
+    { emoji:'🪨', title:'Щепа и опилки',           desc:'Технологическая щепа и опилки навалом.' },
+  ];
+
+  const stats = t('home.stats');
+  const features = t('home.features');
+
+  return (
+    <>
+      {/* ── HERO ─────────────────────────────── */}
       <section className="hero">
         <div className="hero__bg-pattern" />
         <div className="hero__glow" />
         <div className="hero__content">
           <div className="hero__tag">
             <span className="hero__tag-dot" />
-            Беларусь · Экспорт в 8 стран
+            {t('home.heroTag')}
           </div>
           <h1 className="hero__title">
-            Ваш надёжный<br />
-            поставщик <span>лесных<br />ресурсов</span>
+            {t('home.heroTitle')[0]}<br />
+            {t('home.heroTitle')[1]}{' '}
+            <span>{t('home.heroTitle')[2]}</span>
           </h1>
-          <p className="hero__subtitle">
-            ООО «Ельсклес» — производство и поставка пиломатериалов из сосны,
-            промышленная сушка, транспортировка. Работаем с 2010 года.
-          </p>
+          <p className="hero__subtitle">{t('home.heroSub')}</p>
           <div className="hero__actions">
-            <Link to="/products" className="btn btn--primary btn--lg">
-              Смотреть продукцию →
-            </Link>
-            <Link to="/contacts" className="btn btn--outline btn--lg">
-              Связаться с нами
-            </Link>
+            <Link to="/products" className="btn btn--primary btn--lg">{t('home.heroCta1')}</Link>
+            <Link to="/contacts" className="btn btn--outline btn--lg">{t('home.heroCta2')}</Link>
           </div>
           <div className="hero__stats">
-            <div>
-              <div className="hero__stat-num">15<span>+</span></div>
-              <div className="hero__stat-label">Лет опыта</div>
-            </div>
-            <div>
-              <div className="hero__stat-num">8</div>
-              <div className="hero__stat-label">Стран экспорта</div>
-            </div>
-            <div>
-              <div className="hero__stat-num">9<span>+</span></div>
-              <div className="hero__stat-label">Видов продукции</div>
-            </div>
-            <div>
-              <div className="hero__stat-num"><span>с</span> 2010</div>
-              <div className="hero__stat-label">Год основания</div>
-            </div>
+            {stats.map(({ num, label }, i) => (
+              <div key={i}>
+                <div className="hero__stat-num">{num}</div>
+                <div className="hero__stat-label">{label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── О КОМПАНИИ (тизер) ────────────────────── */}
+      {/* ── О КОМПАНИИ (тизер) ──────────────── */}
       <section className="section">
         <div className="container">
           <div className="about-teaser">
             <div className="about-teaser__visual fade-up">
-              <div className="about-teaser__img-wrap">🌲</div>
+              <div className="about-teaser__img-wrap">
+                <img
+                  src="https://elskles.by/img/450x600/a44f89221fb4991cf53a5eca0c3cdf8a.jpg"
+                  alt="Производство Ельсклес"
+                  style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.85 }}
+                  onError={e => { e.currentTarget.style.display='none'; }}
+                />
+              </div>
               <div className="about-teaser__badge">
                 <div className="about-teaser__badge-num">2010</div>
-                <div className="about-teaser__badge-text">Год основания</div>
+                <div className="about-teaser__badge-text">{t('home.stats')[3]?.label}</div>
               </div>
             </div>
             <div className="fade-up">
-              <div className="section-label">О компании</div>
-              <h2 className="section-title">Производство высшего<br />стандарта качества</h2>
-              <p className="section-subtitle">
-                ООО «Ельсклес» — предприятие полного цикла по заготовке, обработке
-                и&nbsp;реализации лесных ресурсов. Собственный лесопильный цех,
-                промышленные сушильные камеры итальянского производства,
-                парк специализированной техники.
-              </p>
+              <div className="section-label">{t('home.aboutLabel')}</div>
+              <h2 className="section-title">{t('home.aboutTitle')}</h2>
+              <p className="section-subtitle">{t('home.aboutText')}</p>
               <div className="about-teaser__features">
-                <div className="about-teaser__feature">
-                  <div className="about-teaser__feature-icon">🔥</div>
-                  <div>
-                    <div className="about-teaser__feature-title">Сушильные камеры</div>
-                    <div className="about-teaser__feature-text">Итальянское оборудование для промышленной сушки</div>
+                {features.map((f, i) => (
+                  <div className="about-teaser__feature" key={i}>
+                    <div className="about-teaser__feature-icon">
+                      {['🔥','🚛','🌍','✅'][i]}
+                    </div>
+                    <div>
+                      <div className="about-teaser__feature-title">{f.title}</div>
+                      <div className="about-teaser__feature-text">{f.text}</div>
+                    </div>
                   </div>
-                </div>
-                <div className="about-teaser__feature">
-                  <div className="about-teaser__feature-icon">🚛</div>
-                  <div>
-                    <div className="about-teaser__feature-title">Собственный транспорт</div>
-                    <div className="about-teaser__feature-text">Доставка по Беларуси и странам СНГ</div>
-                  </div>
-                </div>
-                <div className="about-teaser__feature">
-                  <div className="about-teaser__feature-icon">🌍</div>
-                  <div>
-                    <div className="about-teaser__feature-title">Экспорт</div>
-                    <div className="about-teaser__feature-text">Поставки в 8 стран мира</div>
-                  </div>
-                </div>
-                <div className="about-teaser__feature">
-                  <div className="about-teaser__feature-icon">✅</div>
-                  <div>
-                    <div className="about-teaser__feature-title">Гарантия качества</div>
-                    <div className="about-teaser__feature-text">Соответствие ГОСТ и международным стандартам</div>
-                  </div>
-                </div>
+                ))}
               </div>
-              <div style={{ marginTop: 32 }}>
-                <Link to="/about" className="btn btn--outline-dark">
-                  Подробнее о компании →
-                </Link>
+              <div style={{ marginTop:32 }}>
+                <Link to="/about" className="btn btn--outline-dark">{t('home.aboutCta')}</Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── ПРОДУКЦИЯ (превью) ───────────────────── */}
+      {/* ── ПРОДУКЦИЯ (превью) ──────────────── */}
       <section className="section section--gray">
         <div className="container">
           <div className="section-header--flex fade-up">
             <div>
-              <div className="section-label">Продукция</div>
-              <h2 className="section-title">Что мы производим</h2>
+              <div className="section-label">{t('home.productsLabel')}</div>
+              <h2 className="section-title">{t('home.productsTitle')}</h2>
             </div>
-            <Link to="/products" className="btn btn--outline-dark">
-              Весь каталог →
-            </Link>
+            <Link to="/products" className="btn btn--outline-dark">{t('common.allProducts')}</Link>
           </div>
           <div className="products-grid">
             {PRODUCTS_PREVIEW.map((p, i) => (
-              <div className="product-card fade-up" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
-                <div className="product-card__thumb" style={{ background: `hsl(${30 + i * 15},30%,${88 - i * 4}%)` }}>
-                  <span style={{ fontSize: 64 }}>{p.emoji}</span>
+              <div className="product-card fade-up" key={i} style={{ transitionDelay:`${i*0.08}s` }}>
+                <div className="product-card__thumb" style={{ background:`hsl(${30+i*15},30%,${88-i*4}%)` }}>
+                  <span style={{ fontSize:64 }}>{p.emoji}</span>
                 </div>
                 <div className="product-card__body">
                   <div className="product-card__cat">{p.cat}</div>
                   <div className="product-card__title">{p.title}</div>
                   <p className="product-card__desc">{p.desc}</p>
-                  <Link to="/products" className="btn btn--outline-dark btn--sm">Подробнее</Link>
+                  <Link to="/products" className="btn btn--outline-dark btn--sm">{t('common.learnMore')}</Link>
                 </div>
               </div>
             ))}
@@ -243,21 +265,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── УСЛУГИ (превью) ──────────────────────── */}
+      {/* ── УСЛУГИ (превью) ─────────────────── */}
       <section className="section section--dark">
         <div className="container">
           <div className="section-header--flex fade-up">
             <div>
-              <div className="section-label">Услуги</div>
-              <h2 className="section-title section-title--white">Что мы предлагаем</h2>
+              <div className="section-label">{t('home.servicesLabel')}</div>
+              <h2 className="section-title section-title--white">{t('home.servicesTitle')}</h2>
             </div>
-            <Link to="/services" className="btn btn--outline">
-              Все услуги →
-            </Link>
+            <Link to="/services" className="btn btn--outline">{t('common.allServices')}</Link>
           </div>
           <div className="services-row">
             {SERVICES_PREVIEW.map((s, i) => (
-              <div className="service-card fade-up" key={i} style={{ transitionDelay: `${i * 0.08}s` }}>
+              <div className="service-card fade-up" key={i} style={{ transitionDelay:`${i*0.08}s` }}>
                 <div className="service-card__icon">{s.emoji}</div>
                 <div className="service-card__title">{s.title}</div>
                 <p className="service-card__desc">{s.desc}</p>
@@ -267,114 +287,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── КАРТА ЭКСПОРТА ───────────────────────── */}
+      {/* ── КАРТА ЭКСПОРТА ──────────────────── */}
       <section className="section map-section">
         <div className="container">
           <div className="map-section__header fade-up">
             <div>
-              <div className="section-label">География</div>
+              <div className="section-label">{t('home.mapLabel')}</div>
               <h2 className="section-title section-title--white">
-                Экспортируем в&nbsp;<span className="text-orange">8 стран</span> мира
+                {t('home.mapTitle')}{' '}
+                <span className="text-orange">{t('home.mapTitleSuffix')}</span>
               </h2>
-              <p className="section-subtitle section-subtitle--white">
-                Надёжные долгосрочные партнёрства по всей Евразии
-              </p>
+              <p className="section-subtitle section-subtitle--white">{t('home.mapSub')}</p>
             </div>
           </div>
-
-          <div className="map-wrapper fade-up">
-            <ComposableMap
-              projection="geoMercator"
-              projectionConfig={{ scale: 160, center: [60, 45] }}
-              style={{ width: '100%', height: 'auto', background: '#1C1C1C' }}
-            >
-              <Geographies geography={GEO_URL}>
-                {({ geographies }) =>
-                  geographies.map(geo => {
-                    const id = String(geo.id);
-                    const isPartner = PARTNER_IDS.has(id);
-                    const isHome    = id === HOME_ID;
-                    return (
-                      <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        fill={isHome ? '#4CAF50' : isPartner ? '#F07500' : '#2A2A2A'}
-                        stroke="#1C1C1C"
-                        strokeWidth={0.5}
-                        style={{
-                          default:  { outline: 'none' },
-                          hover:    { fill: isHome ? '#66BB6A' : isPartner ? '#FF8C00' : '#383838', outline: 'none' },
-                          pressed:  { outline: 'none' },
-                        }}
-                      />
-                    );
-                  })
-                }
-              </Geographies>
-              {PARTNER_COUNTRIES.map(({ name, coords, home }) => (
-                <Marker key={name} coordinates={coords}>
-                  <circle r={5} fill={home ? '#4CAF50' : '#F07500'} stroke="white" strokeWidth={1.5} />
-                </Marker>
-              ))}
-            </ComposableMap>
-          </div>
-
-          <div className="map-section__countries fade-up">
-            {PARTNER_COUNTRIES.map(({ name, flag, home }) => (
-              <div className="map-section__country-tag" key={name}>
-                <span className={`map-section__dot${home ? ' map-section__dot--home' : ''}`} />
-                {flag} {name}
-              </div>
-            ))}
-          </div>
+          <ExportMap />
         </div>
       </section>
 
-      {/* ── ОБРАТНАЯ СВЯЗЬ ───────────────────────── */}
+      {/* ── ОБРАТНАЯ СВЯЗЬ ──────────────────── */}
       <section className="section">
         <div className="container">
           <div className="contact-form-section">
             <div className="fade-up">
-              <div className="section-label">Напишите нам</div>
-              <h2 className="section-title">Готовы ответить<br />на ваши вопросы</h2>
-              <p className="section-subtitle">
-                Оставьте заявку и мы свяжемся с вами в рабочее время.
-              </p>
-              <div style={{ marginTop: 36 }}>
-                <div className="contact-form-info__item">
-                  <div className="contact-form-info__icon">📞</div>
-                  <div>
-                    <div className="contact-form-info__label">Телефон</div>
-                    <div className="contact-form-info__value">+375 (2354) 4-06-95</div>
-                    <div className="contact-form-info__value">+375 33 324-20-10</div>
+              <div className="section-label">{t('home.contactLabel')}</div>
+              <h2 className="section-title">{t('home.contactTitle')}</h2>
+              <p className="section-subtitle">{t('home.contactSub')}</p>
+              <div style={{ marginTop:36 }}>
+                {[
+                  { icon:'📞', label:'Телефон', val:'+375 (2354) 4-06-95' },
+                  { icon:'📱', label:'Мобильный',val:'+375 33 324-20-10' },
+                  { icon:'✉️', label:'Email',    val:'elskles.info@gmail.com' },
+                  { icon:'🕐', label:'Работаем', val:'Пн–Пт: 8:00–17:00' },
+                  { icon:'📍', label:'Адрес',    val:'г. Ельск, Кочищанский тракт 6/1' },
+                ].map(({ icon, label, val }) => (
+                  <div className="contact-form-info__item" key={label}>
+                    <div className="contact-form-info__icon">{icon}</div>
+                    <div>
+                      <div className="contact-form-info__label">{label}</div>
+                      <div className="contact-form-info__value">{val}</div>
+                    </div>
                   </div>
-                </div>
-                <div className="contact-form-info__item">
-                  <div className="contact-form-info__icon">✉️</div>
-                  <div>
-                    <div className="contact-form-info__label">Email</div>
-                    <div className="contact-form-info__value">elskles.info@gmail.com</div>
-                  </div>
-                </div>
-                <div className="contact-form-info__item">
-                  <div className="contact-form-info__icon">🕐</div>
-                  <div>
-                    <div className="contact-form-info__label">Режим работы</div>
-                    <div className="contact-form-info__value">Пн–Пт: 8:00–17:00</div>
-                  </div>
-                </div>
-                <div className="contact-form-info__item">
-                  <div className="contact-form-info__icon">📍</div>
-                  <div>
-                    <div className="contact-form-info__label">Адрес</div>
-                    <div className="contact-form-info__value">г. Ельск, Кочищанский тракт 6/1</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
-            <div className="fade-up">
-              <ContactForm />
-            </div>
+            <div className="fade-up"><ContactForm /></div>
           </div>
         </div>
       </section>
