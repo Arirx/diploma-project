@@ -28,9 +28,9 @@ const en = {
     route:        'Get Directions',
   },
   form: {
-    name:      'Name *',
+    name:      'Name*',
     namePh:    'John Smith',
-    phone:     'Phone *',
+    phone:     'Phone*',
     phonePh:   '+375 XX XXX-XX-XX',
     email:     'Email',
     emailPh:   'example@mail.com',

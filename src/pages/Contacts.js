@@ -4,8 +4,8 @@ import useFadeUp from '../hooks/useFadeUp';
 import { STAFF } from '../data/staff';
 
 /* Yandex Maps: г. Ельск, Кочищанский тракт, 6к1 */
-const YANDEX_EMBED = 'https://yandex.ru/map-widget/v1/?ll=29.1356817%2C51.7959557&z=17&text=%D0%95%D0%BB%D1%8C%D1%81%D0%BA%2C+%D0%9A%D0%BE%D1%87%D0%B8%D1%89%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B0%D0%BA%D1%82%2C+6%D0%BA1&l=map&lang=ru_RU';
-const YANDEX_ROUTE = 'https://yandex.ru/maps/?text=%D0%95%D0%BB%D1%8C%D1%81%D0%BA%2C+%D0%9A%D0%BE%D1%87%D0%B8%D1%89%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B0%D0%BA%D1%82%2C+6%D0%BA1&rtt=auto';
+const YANDEX_EMBED = 'https://yandex.ru/map-widget/v1/?ll=29.1356817%2C51.7959557&z=17&pt=29.1356817%2C51.7959557%2Cpm2rdl&l=map&lang=ru_RU';
+const YANDEX_ROUTE = 'https://yandex.ru/maps/?ll=33.724814%2C53.946479&mode=routes&rtext=~51.795261%2C29.134296&rtt=auto&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0NzUyOTc3ODUzEmzQkdC10LvQsNGA0YPRgdGMLCDQk9C-0LzQtdC70YzRgdC60LDRjyDQstC-0LHQu9Cw0YHRhtGMLCDQldC70YzRgdC6LCDQmtCw0YfRi9GI0YfQsNC90YHQutGWINGC0YDQsNC60YIsIDbQujEiCg0LE-lBFVkuT0I%2C&z=6.92';
 
 function ContactForm() {
   const { t } = useLanguage();
@@ -96,8 +96,8 @@ export default function Contacts() {
                   <div>
                     <div className="contact-info-row__label">{t('contacts.phone')}</div>
                     <div className="contact-info-row__value">
-                      <a href="tel:+375235440695">+375 (2354) 4-06-95</a><br />
-                      <a href="tel:+375235443328">+375 (2354) 4-43-28</a>
+                      <a href="tel:+375235440695">+375 (2354) 4-06-95 — директор</a><br />
+                      <a href="tel:+375235443328">+375 (2354) 4-43-28 — бухгалтерия </a>
                     </div>
                   </div>
                 </div>
@@ -112,8 +112,6 @@ export default function Contacts() {
                     <div className="contact-info-row__label">{t('contacts.mobile')}</div>
                     <div className="contact-info-row__value">
                       <a href="tel:+375333242010">+375 33 324-20-10</a><br />
-                      <a href="tel:+375296072307">+375 29 607-23-07</a><br />
-                      <a href="tel:+375291011317">+375 29 101-13-17</a>
                     </div>
                   </div>
                 </div>

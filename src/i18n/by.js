@@ -28,9 +28,9 @@ const by = {
     route:        'Пабудаваць маршрут',
   },
   form: {
-    name:      'Імя *',
+    name:      'Імя*',
     namePh:    'Іван Іваноў',
-    phone:     'Тэлефон *',
+    phone:     'Тэлефон*',
     phonePh:   '+375 XX XXX-XX-XX',
     email:     'Email',
     emailPh:   'example@mail.com',

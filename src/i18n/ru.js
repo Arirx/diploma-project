@@ -28,9 +28,9 @@ const ru = {
     route:        'Построить маршрут',
   },
   form: {
-    name:        'Имя *',
+    name:        'Имя*',
     namePh:      'Иван Иванов',
-    phone:       'Телефон *',
+    phone:       'Телефон*',
     phonePh:     '+375 XX XXX-XX-XX',
     email:       'Email',
     emailPh:     'example@mail.com',
