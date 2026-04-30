@@ -185,7 +185,7 @@ const en = {
     ctaBtn2:    '+375 (2354) 4-06-95',
     methods: [
       { emoji:'🚛', title:'Road transport',     desc:'Delivery by our own heavy-truck fleet. Belarus and CIS countries.', features:['Belarus and CIS','Heavy-duty trucks','Full documentation','Cargo insurance','GPS tracking'] },
-      { emoji:'🏭', title:'Self-collection',    desc:'Pick up from our warehouse in Elsk. Easy access and loading equipment.', features:['Elsk, Kochishchansky tract 6/1','Mon–Fri 8:00–17:00','Amkodor loader','Weighing & docs on site'] },
+      { emoji:'🏭', title:'Self-collection',    desc:'Pick up from our warehouse in Elsk. Easy access and loading equipment.', features:['Elsk, Kochishchansky tract 6k1','Mon–Fri 8:00–17:00','Amkodor loader','Weighing & docs on site'] },
       { emoji:'🚂', title:'Rail delivery',      desc:'Rail dispatch for large lots. Full documentation handled.', features:['Large volumes','International transport','Customs clearance','Turnkey'] },
       { emoji:'🌍', title:'Export shipments',   desc:'Full export transaction support: customs, certificates, phytosanitary docs.', features:['8 partner countries','Customs clearance','Phytosanitary certs','Banking support'] },
     ],
@@ -210,7 +210,7 @@ const en = {
     heroSub:     'We respond to calls and emails during business hours: Mon–Fri 8:00–17:00',
     infoTitle:   'Contact information',
     address:     'Address',
-    addressVal:  'Elsk, Kochishchansky tract 6/1, 247792, Gomel Oblast, Belarus',
+    addressVal:  'Elsk, Kochishchansky tract 6k1, 247792, Gomel Oblast, Belarus',
     phone:       'Phone',
     mobile:      'Mobile / WhatsApp',
     workHours:   'Working hours',

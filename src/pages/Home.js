@@ -320,7 +320,7 @@ export default function Home() {
                   { label:'Мобильный',val:'+375 33 324-20-10' },
                   { label:'Email',    val:'elskles.info@gmail.com' },
                   { label:'Работаем', val:'Пн–Пт: 8:00–17:00' },
-                  { label:'Адрес',    val:'г. Ельск, Кочищанский тракт 6/1' },
+                  { label:'Адрес',    val:'г. Ельск, Кочищанский тракт, 6к1' },
                 ].map(({ label, val }) => (
                   <div className="contact-form-info__item" key={label}>
                     <div className="contact-form-info__dot" />

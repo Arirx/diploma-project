@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 
+const LOGO_URL = 'https://elskles.by/img/200x0/ac9d8977deb65139ef9783d66ee93739.jpg';
+
 export default function Footer() {
   const { t } = useLanguage();
   const year = new Date().getFullYear();
@@ -13,8 +15,21 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="footer__logo">
-              <div className="footer__logo-mark">🌲</div>
-              <div className="footer__logo-name">ЕЛЬСКЛЕС</div>
+              <div className="footer__logo-img-box">
+                <img
+                  src={LOGO_URL}
+                  alt="Ельсклес"
+                  className="footer__logo-img"
+                  onError={e => {
+                    e.currentTarget.parentNode.style.display = 'none';
+                    e.currentTarget.parentNode.nextSibling.style.display = 'flex';
+                  }}
+                />
+              </div>
+              <div className="footer__logo-fallback" style={{ display:'none' }}>
+                <div className="footer__logo-mark">🌲</div>
+                <div className="footer__logo-name">ЕЛЬСКЛЕС</div>
+              </div>
             </div>
             <p className="footer__desc">{t('footer.desc')}</p>
             <div className="footer__social">
@@ -65,7 +80,7 @@ export default function Footer() {
             <div className="footer__col-title">{t('footer.contact')}</div>
             <div className="footer__contact-item">
               <span className="footer__contact-label">Адрес</span>
-              <span>г. Ельск, Кочищанский тракт 6/1</span>
+              <span>г. Ельск, Кочищанский тракт, 6к1</span>
             </div>
             <div className="footer__contact-item">
               <span className="footer__contact-label">Тел.</span>

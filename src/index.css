@@ -256,9 +256,12 @@ ul, ol { list-style: none; }
 .header__logo-img {
   height: 44px;
   width: auto;
-  border-radius: 6px;
   object-fit: contain;
-  mix-blend-mode: multiply;
+  border-radius: 6px;
+  background: #fff;
+  padding: 4px 8px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.10);
+  display: block;
 }
 
 /* Language switcher */
@@ -293,6 +296,24 @@ ul, ol { list-style: none; }
 }
 
 .header__cta { margin-left: 4px; }
+
+.header__phone {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--clr-orange);
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--clr-orange);
+  transition: var(--transition);
+}
+.header__phone:hover {
+  background: var(--clr-orange);
+  color: white;
+}
+@media (max-width: 1060px) { .header__phone { display: none; } }
 
 .header__hamburger {
   display: none;
@@ -351,16 +372,30 @@ ul, ol { list-style: none; }
 @media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr 1fr; gap: 36px; } }
 @media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; } }
 
-.footer__logo-mark {
-  width: 48px; height: 48px;
-  background: var(--clr-orange);
-  border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 12px;
-  font-size: 24px;
-  color: white;
+.footer__logo-img-box {
+  display: inline-flex;
+  background: #fff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  margin-bottom: 14px;
 }
-.footer__logo-name { font-family: var(--font-head); font-size: 20px; font-weight: 800; }
+.footer__logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+.footer__logo-fallback { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.footer__logo-mark {
+  width: 44px; height: 44px;
+  background: var(--clr-orange);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  color: white;
+  flex-shrink: 0;
+}
+.footer__logo-name { font-family: var(--font-head); font-size: 18px; font-weight: 800; }
 .footer__logo-sub {
   font-size: 11px; color: var(--clr-gray-400);
   text-transform: uppercase; letter-spacing: 1px; margin-top: 2px;
@@ -898,10 +933,10 @@ ul, ol { list-style: none; }
 }
 .contact-info-row { display: flex; gap: 14px; margin-bottom: 20px; }
 .contact-info-row__icon {
-  width: 42px; height: 42px;
+  width: 40px; height: 40px;
   background: rgba(240,117,0,0.15); border-radius: 10px;
   display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 18px; color: var(--clr-orange);
+  flex-shrink: 0; color: var(--clr-orange);
 }
 .contact-info-row__label {
   font-size: 11px; font-weight: 700; letter-spacing: 1px;
@@ -968,6 +1003,7 @@ ul, ol { list-style: none; }
 .staff-card__accent {
   width: 4px;
   flex-shrink: 0;
+  background: var(--clr-orange);
 }
 .staff-card__info {
   padding: 16px 20px;

@@ -90,9 +90,9 @@ export default function Header() {
             ))}
           </div>
 
-          <Link to="/contacts" className="btn btn--primary btn--sm header__cta" onClick={closeMenu}>
-            {t('nav.write')}
-          </Link>
+          <a href="tel:+375333242010" className="header__phone header__cta">
+            +375 33 324-20-10
+          </a>
 
           <button
             className={`header__hamburger${menuOpen ? ' open' : ''}`}

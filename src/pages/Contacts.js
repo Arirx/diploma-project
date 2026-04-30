@@ -3,9 +3,9 @@ import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
 import { STAFF } from '../data/staff';
 
-/* Yandex Maps: г. Ельск, ул. Кочищанский тракт 6/1 */
-const YANDEX_EMBED = 'https://yandex.ru/map-widget/v1/?ll=29.165411%2C51.808541&z=16&pt=29.165411%2C51.808541,pm2orgm~ООО%20Ельсклес~г.%20Ельск%2C%20Кочищанский%20тракт%206%2F1&l=map&lang=ru_RU';
-const YANDEX_ROUTE = 'https://yandex.ru/maps/?rtext=~51.808541,29.165411&rtt=auto';
+/* Yandex Maps: г. Ельск, Кочищанский тракт, 6к1 */
+const YANDEX_EMBED = 'https://yandex.ru/map-widget/v1/?ll=29.1356817%2C51.7959557&z=17&text=%D0%95%D0%BB%D1%8C%D1%81%D0%BA%2C+%D0%9A%D0%BE%D1%87%D0%B8%D1%89%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B0%D0%BA%D1%82%2C+6%D0%BA1&l=map&lang=ru_RU';
+const YANDEX_ROUTE = 'https://yandex.ru/maps/?text=%D0%95%D0%BB%D1%8C%D1%81%D0%BA%2C+%D0%9A%D0%BE%D1%87%D0%B8%D1%89%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B0%D0%BA%D1%82%2C+6%D0%BA1&rtt=auto';
 
 function ContactForm() {
   const { t } = useLanguage();
@@ -76,7 +76,11 @@ export default function Contacts() {
                 <div className="contact-info-card__title">{t('contacts.infoTitle')}</div>
 
                 <div className="contact-info-row">
-                  <div className="contact-info-row__icon">📍</div>
+                  <div className="contact-info-row__icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                    </svg>
+                  </div>
                   <div>
                     <div className="contact-info-row__label">{t('contacts.address')}</div>
                     <div className="contact-info-row__value">{t('contacts.addressVal')}</div>
@@ -84,7 +88,11 @@ export default function Contacts() {
                 </div>
 
                 <div className="contact-info-row">
-                  <div className="contact-info-row__icon">📞</div>
+                  <div className="contact-info-row__icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.73 16z"/>
+                    </svg>
+                  </div>
                   <div>
                     <div className="contact-info-row__label">{t('contacts.phone')}</div>
                     <div className="contact-info-row__value">
@@ -95,7 +103,11 @@ export default function Contacts() {
                 </div>
 
                 <div className="contact-info-row">
-                  <div className="contact-info-row__icon">📱</div>
+                  <div className="contact-info-row__icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+                    </svg>
+                  </div>
                   <div>
                     <div className="contact-info-row__label">{t('contacts.mobile')}</div>
                     <div className="contact-info-row__value">
@@ -107,7 +119,11 @@ export default function Contacts() {
                 </div>
 
                 <div className="contact-info-row">
-                  <div className="contact-info-row__icon">✉️</div>
+                  <div className="contact-info-row__icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                  </div>
                   <div>
                     <div className="contact-info-row__label">Email</div>
                     <div className="contact-info-row__value">
@@ -117,7 +133,11 @@ export default function Contacts() {
                 </div>
 
                 <div className="contact-info-row">
-                  <div className="contact-info-row__icon">🕐</div>
+                  <div className="contact-info-row__icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  </div>
                   <div>
                     <div className="contact-info-row__label">{t('contacts.workHours')}</div>
                     <div className="contact-info-row__value">{t('contacts.workHoursVal')}</div>
@@ -125,7 +145,11 @@ export default function Contacts() {
                 </div>
 
                 <div className="contact-info-row">
-                  <div className="contact-info-row__icon">🏢</div>
+                  <div className="contact-info-row__icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                    </svg>
+                  </div>
                   <div>
                     <div className="contact-info-row__label">{t('contacts.details')}</div>
                     <div className="contact-info-row__value">ООО «Ельсклес»<br />УНП 490333750</div>
@@ -161,7 +185,7 @@ export default function Contacts() {
           <div className="staff-grid">
             {STAFF.map((person, i) => (
               <div className="staff-card fade-up" key={person.id} style={{ transitionDelay:`${i*0.05}s` }}>
-                <div className="staff-card__accent" style={{ background: person.color }} />
+                <div className="staff-card__accent" />
                 <div className="staff-card__info">
                   <div className="staff-card__name">{person.name}</div>
                   <div className="staff-card__pos">{l(person.position)}</div>
