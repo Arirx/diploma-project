@@ -4,7 +4,7 @@ import useFadeUp from '../hooks/useFadeUp';
 import { STAFF } from '../data/staff';
 
 /* Yandex Maps: г. Ельск, Кочищанский тракт, 6к1 */
-const YANDEX_EMBED = 'https://yandex.ru/map-widget/v1/?ll=29.1356817%2C51.7959557&z=17&pt=29.1356817%2C51.7959557%2Cpm2rdl&l=map&lang=ru_RU';
+const YANDEX_EMBED = 'https://yandex.ru/map-widget/v1/?um=constructor%3A06305ca10f3bbc72a4ef5d80f3a29e052f4ffd80e49beeef59925b4265726119&source=constructor';
 const YANDEX_ROUTE = 'https://yandex.ru/maps/?ll=33.724814%2C53.946479&mode=routes&rtext=~51.795261%2C29.134296&rtt=auto&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgo0NzUyOTc3ODUzEmzQkdC10LvQsNGA0YPRgdGMLCDQk9C-0LzQtdC70YzRgdC60LDRjyDQstC-0LHQu9Cw0YHRhtGMLCDQldC70YzRgdC6LCDQmtCw0YfRi9GI0YfQsNC90YHQutGWINGC0YDQsNC60YIsIDbQujEiCg0LE-lBFVkuT0I%2C&z=6.92';
 
 function ContactForm() {
@@ -96,7 +96,7 @@ export default function Contacts() {
                   <div>
                     <div className="contact-info-row__label">{t('contacts.phone')}</div>
                     <div className="contact-info-row__value">
-                      <a href="tel:+375235440695">+375 (2354) 4-06-95 — директор</a><br />
+                      <a href="tel:+375235440695">+375 (2354) 4-06-95 — директор, зам. директора</a><br />
                       <a href="tel:+375235443328">+375 (2354) 4-43-28 — бухгалтерия </a>
                     </div>
                   </div>

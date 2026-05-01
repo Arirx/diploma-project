@@ -40,6 +40,7 @@ const en = {
     messagePh: 'Describe your enquiry...',
     note:      'By clicking Send you agree to the processing of personal data.',
     success:   '✅ Message sent! We will get back to you during business hours (Mon–Fri 8:00–17:00).',
+    sendMessage:    'Leave a Request',
     topics: ['Lumber enquiry', 'Transport services', 'Partnership / export', 'Vacancies', 'Other'],
   },
   footer: {
