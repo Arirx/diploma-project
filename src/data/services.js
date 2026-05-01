@@ -6,7 +6,6 @@
 export const SERVICES = [
   {
     id: 'drying',
-    emoji: '🔥',
     title: {
       ru: 'Промышленная сушка пиломатериалов',
       en: 'Industrial Timber Drying',
@@ -25,7 +24,6 @@ export const SERVICES = [
   },
   {
     id: 'transport-lumber',
-    emoji: '🚛',
     title: {
       ru: 'Транспортировка лесоматериалов',
       en: 'Timber Transportation',
@@ -44,7 +42,6 @@ export const SERVICES = [
   },
   {
     id: 'transport-chips',
-    emoji: '🌿',
     title: {
       ru: 'Транспортировка щепы и опилок',
       en: 'Chips & Sawdust Transportation',
@@ -63,7 +60,6 @@ export const SERVICES = [
   },
   {
     id: 'loading',
-    emoji: '🏗️',
     title: {
       ru: 'Погрузочно-разгрузочные работы',
       en: 'Loading & Unloading',
@@ -82,7 +78,6 @@ export const SERVICES = [
   },
   {
     id: 'harvesting',
-    emoji: '🌲',
     title: {
       ru: 'Заготовка и трелёвка лесоматериалов',
       en: 'Timber Harvesting & Skidding',
