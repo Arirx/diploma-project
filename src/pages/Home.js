@@ -10,7 +10,15 @@ import {
   COUNTRY_NAMES,
   COUNTRY_COORDS,
 } from '../data/countries';
+import { PRODUCTS } from '../data/products';
+import { SERVICES } from '../data/services';
 import productionPhoto from '../assets/images/production-photo.jpg';
+import { ReactComponent as CheckIcon        } from '../assets/icons/home/check.svg';
+import { ReactComponent as FlameIcon        } from '../assets/icons/flame.svg';
+import { ReactComponent as TruckIcon        } from '../assets/icons/truck.svg';
+import { ReactComponent as PackageIcon      } from '../assets/icons/package.svg';
+import { ReactComponent as TreeIcon         } from '../assets/icons/tree.svg';
+import { ReactComponent as LeafIcon         } from '../assets/icons/leaf.svg';
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
 
@@ -140,57 +148,18 @@ function ExportMap() {
   );
 }
 
-const SVC = ({ children }) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    {children}
-  </svg>
-);
-
-const HOME_SVC_ICONS = [
-  <SVC key="flame">
-    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
-  </SVC>,
-  <SVC key="truck">
-    <rect x="1" y="3" width="15" height="12" rx="1"/>
-    <path d="M16 8h4l3 5v4h-7z"/>
-    <circle cx="5" cy="18" r="2"/>
-    <circle cx="19" cy="18" r="2"/>
-  </SVC>,
-  <SVC key="pkg">
-    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-    <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-    <line x1="12" y1="22.08" x2="12" y2="12"/>
-  </SVC>,
-  <SVC key="tree">
-    <path d="M17 14l3 3.3a1 1 0 0 1-.7 1.7H4.7a1 1 0 0 1-.7-1.7L7 14h-.3a1 1 0 0 1-.7-1.7L9 9h-.2A1 1 0 0 1 8 7.3L12 3l4 4.3A1 1 0 0 1 15.2 9H15l2.7 3.3a1 1 0 0 1-.7 1.7z"/>
-    <line x1="12" y1="22" x2="12" y2="19"/>
-  </SVC>,
-  <SVC key="leaf">
-    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
-    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-  </SVC>,
-];
+const HOME_SVC_ICONS = {
+  drying:           FlameIcon,
+  'transport-lumber': TruckIcon,
+  'transport-chips':  LeafIcon,
+  loading:          PackageIcon,
+  harvesting:       TreeIcon,
+};
 
 /* ── Page ─────────────────────────────────────────────────── */
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, l } = useLanguage();
   useFadeUp();
-
-  const PRODUCTS_PREVIEW = [
-    { emoji:'🪵', cat: t('home.productsLabel'), title:'Пиломатериалы обрезные', desc:'Обрезные доски из сосны. Широкий выбор сечений и длин.' },
-    { emoji:'📐', cat: t('home.productsLabel'), title:'Брус строительный',       desc:'Брус из сосны для строительства и перекрытий.' },
-    { emoji:'🚂', cat: t('home.productsLabel'), title:'Шпала деревянная',         desc:'Шпалы из сосны для железнодорожного применения.' },
-    { emoji:'🔥', cat: t('home.productsLabel'), title:'Уголь древесный',          desc:'Высококалорийный уголь из лиственных пород.' },
-  ];
-
-  const SERVICES_PREVIEW = [
-    { title:'Сушка пиломатериалов',  desc:'Промышленные камеры итальянского производства.' },
-    { title:'Транспортировка',         desc:'Доставка лесоматериалов по Беларуси и СНГ.' },
-    { title:'Погрузочные работы',     desc:'Погрузка-выгрузка техникой Амкодор.' },
-    { title:'Заготовка древесины',     desc:'Заготовка и трелёвка в Гомельской области.' },
-    { title:'Щепа и опилки',           desc:'Технологическая щепа и опилки навалом.' },
-  ];
 
   const stats = t('home.stats');
   const features = t('home.features');
@@ -252,9 +221,7 @@ export default function Home() {
                 {features.map((f, i) => (
                   <div className="about-teaser__feature" key={i}>
                     <div className="about-teaser__feature-icon">
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                        <path d="M3 9L7 13L15 5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
+                      <CheckIcon width="18" height="18" />
                     </div>
                     <div>
                       <div className="about-teaser__feature-title">{f.title}</div>
@@ -282,15 +249,15 @@ export default function Home() {
             <Link to="/products" className="btn btn--outline-dark">{t('common.allProducts')}</Link>
           </div>
           <div className="products-grid">
-            {PRODUCTS_PREVIEW.map((p, i) => (
-              <div className="product-card fade-up" key={i} style={{ transitionDelay:`${i*0.08}s` }}>
-                <div className="product-card__thumb" style={{ background:`hsl(${30+i*15},30%,${88-i*4}%)` }}>
+            {PRODUCTS.slice(0, 4).map((p, i) => (
+              <div className="product-card fade-up" key={p.id} style={{ transitionDelay:`${i*0.08}s` }}>
+                <div className="product-card__thumb" style={{ background: p.thumbBg }}>
                   <span style={{ fontSize:64 }}>{p.emoji}</span>
                 </div>
                 <div className="product-card__body">
-                  <div className="product-card__cat">{p.cat}</div>
-                  <div className="product-card__title">{p.title}</div>
-                  <p className="product-card__desc">{p.desc}</p>
+                  <div className="product-card__cat">{l(p.cat)}</div>
+                  <div className="product-card__title">{l(p.title)}</div>
+                  <p className="product-card__desc">{l(p.desc)}</p>
                   <Link to="/products" className="btn btn--outline-dark btn--sm">{t('common.learnMore')}</Link>
                 </div>
               </div>
@@ -310,13 +277,18 @@ export default function Home() {
             <Link to="/services" className="btn btn--outline">{t('common.allServices')}</Link>
           </div>
           <div className="services-row">
-            {SERVICES_PREVIEW.map((s, i) => (
-              <div className="service-card fade-up" key={i} style={{ transitionDelay:`${i*0.08}s` }}>
-                <div className="service-card__icon">{HOME_SVC_ICONS[i]}</div>
-                <div className="service-card__title">{s.title}</div>
-                <p className="service-card__desc">{s.desc}</p>
-              </div>
-            ))}
+            {SERVICES.slice(0, 5).map((s, i) => {
+              const Icon = HOME_SVC_ICONS[s.id];
+              return (
+                <div className="service-card fade-up" key={s.id} style={{ transitionDelay:`${i*0.08}s` }}>
+                  <div className="service-card__icon icon-box">
+                    {Icon && <Icon width={24} height={24} />}
+                  </div>
+                  <div className="service-card__title">{l(s.title)}</div>
+                  <p className="service-card__desc">{l(s.desc)}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

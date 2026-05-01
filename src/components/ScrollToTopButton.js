@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { ReactComponent as ArrowUpIcon } from '../assets/icons/components/arrow-up.svg';
 
 export default function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
@@ -16,9 +17,7 @@ export default function ScrollToTopButton() {
       aria-label="Наверх"
       title="Наверх"
     >
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M10 4L3 11h4v5h6v-5h4L10 4z" fill="currentColor"/>
-      </svg>
+      <ArrowUpIcon width="20" height="20" />
     </button>
   );
 }
