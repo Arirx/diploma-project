@@ -2,22 +2,14 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
 import { VACANCIES, BENEFITS } from '../data/vacancies';
+import { ReactComponent as ClipboardIcon  } from '../assets/icons/clipboard.svg';
+import { ReactComponent as BusIcon        } from '../assets/icons/bus.svg';
+import { ReactComponent as ShieldIcon     } from '../assets/icons/shield.svg';
+import { ReactComponent as HardhatIcon    } from '../assets/icons/hardhat.svg';
+import { ReactComponent as BookOpenIcon   } from '../assets/icons/book-open.svg';
+import { ReactComponent as TrendingUpIcon } from '../assets/icons/trending-up.svg';
 
-const B = ({ children }) => (
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    {children}
-  </svg>
-);
-
-const BENEFIT_ICONS = [
-  <B key="clipboard"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></B>,
-  <B key="bus"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 11h20"/><path d="M8 5v6m8-6v6"/><circle cx="7.5" cy="19" r="1"/><circle cx="16.5" cy="19" r="1"/></B>,
-  <B key="shield"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></B>,
-  <B key="hardhat"><path d="M2 19a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1z"/><path d="M10 10V6a2 2 0 0 1 4 0v4"/><path d="M4 18c0-4 2-7.5 3.5-8.5"/><path d="M20 18c0-4-2-7.5-3.5-8.5"/></B>,
-  <B key="book"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></B>,
-  <B key="trending"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></B>,
-];
+const BENEFIT_ICONS = [ClipboardIcon, BusIcon, ShieldIcon, HardhatIcon, BookOpenIcon, TrendingUpIcon];
 
 export default function Vacancies() {
   const { t, l } = useLanguage();
@@ -112,13 +104,16 @@ export default function Vacancies() {
             <p className="section-subtitle">{t('vacancies.benefitsSub')}</p>
           </div>
           <div className="benefits-grid">
-            {BENEFITS.map((b, i) => (
+            {BENEFITS.map((b, i) => {
+              const Icon = BENEFIT_ICONS[i];
+              return (
               <div className="benefit-card fade-up" key={i} style={{ transitionDelay:`${i*0.07}s` }}>
-                <div className="benefit-card__icon">{BENEFIT_ICONS[i]}</div>
+                <div className="benefit-card__icon icon-box"><Icon width={26} height={26} /></div>
                 <div className="benefit-card__title">{l(b.title)}</div>
                 <p className="benefit-card__text">{l(b.text)}</p>
               </div>
-            ))}
+            );
+            })}
           </div>
         </div>
       </section>

@@ -79,7 +79,7 @@ export default function About() {
               const Icon = VALUE_ICONS[i];
               return (
                 <div className="value-card fade-up" key={i} style={{ transitionDelay:`${i*0.07}s` }}>
-                  <div className="value-card__icon"><Icon width={24} height={24} /></div>
+                  <div className="value-card__icon icon-box"><Icon width={24} height={24} /></div>
                   <div className="value-card__title">{v.title}</div>
                   <p className="value-card__text">{v.text}</p>
                 </div>
@@ -102,7 +102,7 @@ export default function About() {
               const Icon = PROD_ICONS[i];
               return (
                 <div className="production-item fade-up" key={i} style={{ transitionDelay:`${i*0.07}s` }}>
-                  <div className="production-item__icon"><Icon width={24} height={24} /></div>
+                  <div className="production-item__icon icon-box"><Icon width={24} height={24} /></div>
                   <div>
                     <div className="production-item__title">{p.title}</div>
                     <p className="production-item__text">{p.text}</p>

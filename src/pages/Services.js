@@ -2,6 +2,11 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
 import { SERVICES } from '../data/services';
+import { ReactComponent as ZapIcon      } from '../assets/icons/zap.svg';
+import { ReactComponent as WrenchIcon   } from '../assets/icons/wrench.svg';
+import { ReactComponent as ClipboardIcon} from '../assets/icons/clipboard.svg';
+import { ReactComponent as BanknoteIcon } from '../assets/icons/banknote.svg';
+import { ReactComponent as TrainIcon    } from '../assets/icons/train.svg';
 
 const SVC = ({ children }) => (
   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -45,30 +50,7 @@ const SERVICE_ICONS = {
   ),
 };
 
-const WHY_ICONS = [
-  <SVC key="zap">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-  </SVC>,
-  <SVC key="wrench">
-    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-  </SVC>,
-  <SVC key="file">
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-    <polyline points="14 2 14 8 20 8"/>
-    <line x1="16" y1="13" x2="8" y2="13"/>
-    <line x1="16" y1="17" x2="8" y2="17"/>
-  </SVC>,
-  <SVC key="tag">
-    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-    <line x1="7" y1="7" x2="7.01" y2="7"/>
-  </SVC>,
-  <SVC key="train">
-    <rect x="4" y="3" width="16" height="16" rx="2"/>
-    <path d="M4 11h16"/><path d="M12 3v8"/>
-    <circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/>
-    <path d="m8 19-2 3m10-3 2 3"/>
-  </SVC>,
-];
+const WHY_ICONS = [ZapIcon, WrenchIcon, ClipboardIcon, BanknoteIcon, TrainIcon];
 
 export default function Services() {
   const { t, l } = useLanguage();
@@ -116,13 +98,16 @@ export default function Services() {
             <h2 className="section-title">{t('services.whyTitle')}</h2>
           </div>
           <div className="values-grid">
-            {WHY.map((w, i) => (
-              <div className="value-card fade-up" key={i} style={{ transitionDelay:`${i*0.07}s` }}>
-                <div className="value-card__icon">{WHY_ICONS[i]}</div>
-                <div className="value-card__title">{w.title}</div>
-                <p className="value-card__text">{w.text}</p>
-              </div>
-            ))}
+            {WHY.map((w, i) => {
+              const Icon = WHY_ICONS[i];
+              return (
+                <div className="value-card fade-up" key={i} style={{ transitionDelay:`${i*0.07}s` }}>
+                  <div className="value-card__icon icon-box"><Icon width={24} height={24} /></div>
+                  <div className="value-card__title">{w.title}</div>
+                  <p className="value-card__text">{w.text}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
