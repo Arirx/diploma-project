@@ -1,6 +1,21 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
+import { ReactComponent as TrophyIcon    } from '../assets/icons/trophy.svg';
+import { ReactComponent as ShieldIcon    } from '../assets/icons/shield.svg';
+import { ReactComponent as GlobeIcon     } from '../assets/icons/globe.svg';
+import { ReactComponent as LeafIcon      } from '../assets/icons/leaf.svg';
+import { ReactComponent as LightbulbIcon } from '../assets/icons/lightbulb.svg';
+import { ReactComponent as UsersIcon     } from '../assets/icons/users.svg';
+import { ReactComponent as WrenchIcon    } from '../assets/icons/wrench.svg';
+import { ReactComponent as FlameIcon     } from '../assets/icons/flame.svg';
+import { ReactComponent as SettingsIcon  } from '../assets/icons/settings.svg';
+import { ReactComponent as TruckIcon     } from '../assets/icons/truck.svg';
+import { ReactComponent as PackageIcon   } from '../assets/icons/package.svg';
+import { ReactComponent as LayersIcon    } from '../assets/icons/layers.svg';
+
+const VALUE_ICONS = [TrophyIcon, ShieldIcon, GlobeIcon, LeafIcon, LightbulbIcon, UsersIcon];
+const PROD_ICONS  = [WrenchIcon, FlameIcon, SettingsIcon, TruckIcon, PackageIcon, LayersIcon];
 
 export default function About() {
   const { t } = useLanguage();
@@ -59,13 +74,16 @@ export default function About() {
             <p className="section-subtitle">{t('about.valuesSub')}</p>
           </div>
           <div className="values-grid">
-            {values.map((v, i) => (
-              <div className="value-card fade-up" key={i} style={{ transitionDelay:`${i*0.07}s` }}>
-                <div className="value-card__icon">{v.emoji}</div>
-                <div className="value-card__title">{v.title}</div>
-                <p className="value-card__text">{v.text}</p>
-              </div>
-            ))}
+            {values.map((v, i) => {
+              const Icon = VALUE_ICONS[i];
+              return (
+                <div className="value-card fade-up" key={i} style={{ transitionDelay:`${i*0.07}s` }}>
+                  <div className="value-card__icon"><Icon width={24} height={24} /></div>
+                  <div className="value-card__title">{v.title}</div>
+                  <p className="value-card__text">{v.text}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -79,15 +97,18 @@ export default function About() {
             <p className="section-subtitle section-subtitle--white">{t('about.prodSub')}</p>
           </div>
           <div className="production-grid">
-            {production.map((p, i) => (
-              <div className="production-item fade-up" key={i} style={{ transitionDelay:`${i*0.07}s` }}>
-                <div className="production-item__icon">{p.emoji}</div>
-                <div>
-                  <div className="production-item__title">{p.title}</div>
-                  <p className="production-item__text">{p.text}</p>
+            {production.map((p, i) => {
+              const Icon = PROD_ICONS[i];
+              return (
+                <div className="production-item fade-up" key={i} style={{ transitionDelay:`${i*0.07}s` }}>
+                  <div className="production-item__icon"><Icon width={24} height={24} /></div>
+                  <div>
+                    <div className="production-item__title">{p.title}</div>
+                    <p className="production-item__text">{p.text}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

@@ -10,6 +10,7 @@ import {
   COUNTRY_NAMES,
   COUNTRY_COORDS,
 } from '../data/countries';
+import productionPhoto from '../assets/images/production-photo.jpg';
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
 
@@ -233,10 +234,9 @@ export default function Home() {
             <div className="about-teaser__visual fade-up">
               <div className="about-teaser__img-wrap">
                 <img
-                  src="https://elskles.by/img/450x600/a44f89221fb4991cf53a5eca0c3cdf8a.jpg"
+                  src={productionPhoto}
                   alt="Производство Ельсклес"
                   style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.85 }}
-                  onError={e => { e.currentTarget.style.display='none'; }}
                 />
               </div>
               <div className="about-teaser__badge">

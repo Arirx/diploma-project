@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-
-const LOGO_URL = 'https://elskles.by/img/200x0/ac9d8977deb65139ef9783d66ee93739.jpg';
+import logoImg from '../assets/images/logo-footer.png';
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -17,7 +16,7 @@ export default function Footer() {
             <div className="footer__logo">
               <div className="footer__logo-img-box">
                 <img
-                  src={LOGO_URL}
+                  src={logoImg}
                   alt="Ельсклес"
                   className="footer__logo-img"
                   onError={e => {

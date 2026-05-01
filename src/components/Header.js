@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-
-const LOGO_URL = 'https://elskles.by/img/200x0/ac9d8977deb65139ef9783d66ee93739.jpg';
+import logoImg from '../assets/images/logo-header.png';
 const LANGS = [
   { code: 'ru', label: 'RU' },
   { code: 'en', label: 'EN' },
@@ -39,7 +38,7 @@ export default function Header() {
         {/* Logo */}
         <Link to="/" className="header__logo" onClick={closeMenu}>
           <img
-            src={LOGO_URL}
+            src={logoImg}
             alt="Ельсклес"
             className="header__logo-img"
             onError={e => { e.currentTarget.style.display = 'none'; e.currentTarget.nextSibling.style.display = 'flex'; }}

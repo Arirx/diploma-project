@@ -780,7 +780,13 @@ ul, ol { list-style: none; }
   background: var(--clr-dark-2); border-radius: var(--radius);
   border: 1px solid var(--clr-dark-3);
 }
-.production-item__icon { font-size: 32px; flex-shrink: 0; }
+.production-item__icon {
+  width: 44px; height: 44px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--clr-orange);
+  background: rgba(240,117,0,0.15);
+  border-radius: var(--radius);
+}
 .production-item__title { font-family: var(--font-head); font-size: 14px; font-weight: 700; color: var(--clr-white); margin-bottom: 4px; }
 .production-item__text { font-size: 13px; color: var(--clr-gray-400); line-height: 1.6; }
 
