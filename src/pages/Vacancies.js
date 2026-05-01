@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
 import { VACANCIES, BENEFITS } from '../data/vacancies';
-import { ReactComponent as ClipboardIcon  } from '../assets/icons/clipboard.svg';
-import { ReactComponent as BusIcon        } from '../assets/icons/bus.svg';
-import { ReactComponent as ShieldIcon     } from '../assets/icons/shield.svg';
-import { ReactComponent as HardhatIcon    } from '../assets/icons/hardhat.svg';
-import { ReactComponent as BookOpenIcon   } from '../assets/icons/book-open.svg';
-import { ReactComponent as TrendingUpIcon } from '../assets/icons/trending-up.svg';
+import { ReactComponent as ClipboardIcon  } from '../assets/icons/vacancies/clipboard.svg';
+import { ReactComponent as BusIcon        } from '../assets/icons/vacancies/bus.svg';
+import { ReactComponent as ShieldIcon     } from '../assets/icons/vacancies/shield.svg';
+import { ReactComponent as HardhatIcon    } from '../assets/icons/vacancies/hardhat.svg';
+import { ReactComponent as BookOpenIcon   } from '../assets/icons/vacancies/book-open.svg';
+import { ReactComponent as TrendingUpIcon } from '../assets/icons/vacancies/trending-up.svg';
 
 const BENEFIT_ICONS = [ClipboardIcon, BusIcon, ShieldIcon, HardhatIcon, BookOpenIcon, TrendingUpIcon];
 

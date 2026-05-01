@@ -6,7 +6,7 @@ import { ReactComponent as MapPinIcon    } from '../assets/icons/contacts/map-pi
 import { ReactComponent as PhoneIcon     } from '../assets/icons/contacts/phone.svg';
 import { ReactComponent as SmartphoneIcon} from '../assets/icons/contacts/smartphone.svg';
 import { ReactComponent as MailIcon      } from '../assets/icons/contacts/mail.svg';
-import { ReactComponent as ClockIcon     } from '../assets/icons/clock.svg';
+import { ReactComponent as ClockIcon     } from '../assets/icons/contacts/clock.svg';
 import { ReactComponent as BriefcaseIcon } from '../assets/icons/contacts/briefcase.svg';
 
 /* Yandex Maps: г. Ельск, Кочищанский тракт, 6к1 */

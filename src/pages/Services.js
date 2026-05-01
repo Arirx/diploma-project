@@ -2,16 +2,16 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
 import { SERVICES } from '../data/services';
-import { ReactComponent as ZapIcon      } from '../assets/icons/zap.svg';
-import { ReactComponent as WrenchIcon   } from '../assets/icons/wrench.svg';
-import { ReactComponent as ClipboardIcon} from '../assets/icons/clipboard.svg';
-import { ReactComponent as BanknoteIcon } from '../assets/icons/banknote.svg';
-import { ReactComponent as TrainIcon    } from '../assets/icons/train.svg';
-import { ReactComponent as FlameIcon    } from '../assets/icons/flame.svg';
-import { ReactComponent as TruckIcon    } from '../assets/icons/truck.svg';
-import { ReactComponent as LeafIcon     } from '../assets/icons/leaf.svg';
-import { ReactComponent as PackageIcon  } from '../assets/icons/package.svg';
-import { ReactComponent as TreeIcon     } from '../assets/icons/tree.svg';
+import { ReactComponent as ZapIcon      } from '../assets/icons/services/why/zap.svg';
+import { ReactComponent as WrenchIcon   } from '../assets/icons/services/why/wrench.svg';
+import { ReactComponent as ClipboardIcon} from '../assets/icons/services/why/clipboard.svg';
+import { ReactComponent as BanknoteIcon } from '../assets/icons/services/why/banknote.svg';
+import { ReactComponent as TrainIcon    } from '../assets/icons/services/why/train.svg';
+import { ReactComponent as FlameIcon    } from '../assets/icons/services/items/flame.svg';
+import { ReactComponent as TruckIcon    } from '../assets/icons/services/items/truck.svg';
+import { ReactComponent as LeafIcon     } from '../assets/icons/services/items/leaf.svg';
+import { ReactComponent as PackageIcon  } from '../assets/icons/services/items/package.svg';
+import { ReactComponent as TreeIcon     } from '../assets/icons/services/items/tree.svg';
 
 const SERVICE_ICONS = {
   drying:             FlameIcon,

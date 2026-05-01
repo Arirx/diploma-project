@@ -14,11 +14,11 @@ import { PRODUCTS } from '../data/products';
 import { SERVICES } from '../data/services';
 import productionPhoto from '../assets/images/production-photo.jpg';
 import { ReactComponent as CheckIcon        } from '../assets/icons/home/check.svg';
-import { ReactComponent as FlameIcon        } from '../assets/icons/flame.svg';
-import { ReactComponent as TruckIcon        } from '../assets/icons/truck.svg';
-import { ReactComponent as PackageIcon      } from '../assets/icons/package.svg';
-import { ReactComponent as TreeIcon         } from '../assets/icons/tree.svg';
-import { ReactComponent as LeafIcon         } from '../assets/icons/leaf.svg';
+import { ReactComponent as FlameIcon        } from '../assets/icons/home/services/flame.svg';
+import { ReactComponent as TruckIcon        } from '../assets/icons/home/services/truck.svg';
+import { ReactComponent as PackageIcon      } from '../assets/icons/home/services/package.svg';
+import { ReactComponent as TreeIcon         } from '../assets/icons/home/services/tree.svg';
+import { ReactComponent as LeafIcon         } from '../assets/icons/home/services/leaf.svg';
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
 
@@ -252,7 +252,7 @@ export default function Home() {
             {PRODUCTS.slice(0, 4).map((p, i) => (
               <div className="product-card fade-up" key={p.id} style={{ transitionDelay:`${i*0.08}s` }}>
                 <div className="product-card__thumb" style={{ background: p.thumbBg }}>
-                  <span style={{ fontSize:64 }}>{p.emoji}</span>
+                  <span style={{ fontSize:64 }}><img src={p.image} alt={p.emoji} width='100%'/></span>
                 </div>
                 <div className="product-card__body">
                   <div className="product-card__cat">{l(p.cat)}</div>

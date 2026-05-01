@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
-import { ReactComponent as TruckIcon     } from '../assets/icons/truck.svg';
-import { ReactComponent as WarehouseIcon } from '../assets/icons/warehouse.svg';
-import { ReactComponent as TrainIcon     } from '../assets/icons/train.svg';
-import { ReactComponent as GlobeIcon     } from '../assets/icons/globe.svg';
-import { ReactComponent as CreditCardIcon} from '../assets/icons/credit-card.svg';
-import { ReactComponent as BanknoteIcon  } from '../assets/icons/banknote.svg';
-import { ReactComponent as ClockIcon     } from '../assets/icons/clock.svg';
+import { ReactComponent as TruckIcon     } from '../assets/icons/delivery/methods/truck.svg';
+import { ReactComponent as WarehouseIcon } from '../assets/icons/delivery/methods/warehouse.svg';
+import { ReactComponent as TrainIcon     } from '../assets/icons/delivery/methods/train.svg';
+import { ReactComponent as GlobeIcon     } from '../assets/icons/delivery/methods/globe.svg';
+import { ReactComponent as CreditCardIcon} from '../assets/icons/delivery/payments/credit-card.svg';
+import { ReactComponent as BanknoteIcon  } from '../assets/icons/delivery/payments/banknote.svg';
+import { ReactComponent as GlobePayIcon  } from '../assets/icons/delivery/payments/globe.svg';
+import { ReactComponent as ClockIcon     } from '../assets/icons/delivery/payments/clock.svg';
 
 const METHOD_ICONS  = [TruckIcon, WarehouseIcon, TrainIcon, GlobeIcon];
-const PAYMENT_ICONS = [CreditCardIcon, BanknoteIcon, GlobeIcon, ClockIcon];
+const PAYMENT_ICONS = [CreditCardIcon, BanknoteIcon, GlobePayIcon, ClockIcon];
 
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
