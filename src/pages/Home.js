@@ -12,7 +12,7 @@ import {
 } from '../data/countries';
 import { PRODUCTS } from '../data/products';
 import { SERVICES } from '../data/services';
-import productionPhoto from '../assets/images/production-photo.jpg';
+import homePhoto from '../assets/images/home/home-img.jpg';
 import { ReactComponent as CheckIcon        } from '../assets/icons/home/check.svg';
 import { ReactComponent as FlameIcon        } from '../assets/icons/home/services/flame.svg';
 import { ReactComponent as TruckIcon        } from '../assets/icons/home/services/truck.svg';
@@ -203,7 +203,7 @@ export default function Home() {
             <div className="about-teaser__visual fade-up">
               <div className="about-teaser__img-wrap">
                 <img
-                  src={productionPhoto}
+                  src={homePhoto}
                   alt="Производство Ельсклес"
                   style={{ width:'100%', height:'100%', objectFit:'cover', opacity:0.85 }}
                 />
@@ -251,8 +251,8 @@ export default function Home() {
           <div className="products-grid">
             {PRODUCTS.slice(0, 4).map((p, i) => (
               <div className="product-card fade-up" key={p.id} style={{ transitionDelay:`${i*0.08}s` }}>
-                <div className="product-card__thumb" style={{ background: p.thumbBg }}>
-                  <span style={{ fontSize:64 }}><img src={p.image} alt={p.emoji} width='100%'/></span>
+                <div className="product-card__thumb">
+                  <img src={p.image} alt={l(p.title)} />
                 </div>
                 <div className="product-card__body">
                   <div className="product-card__cat">{l(p.cat)}</div>
