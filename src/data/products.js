@@ -14,7 +14,8 @@
  *   specs     – array of [key, value] specification rows (multilingual)
  */
 
-const LUMBER_IMG = 'https://elskles.by/img/450x600/99cea48cbfd394b054dd11e7be0f361c.jpg';
+import productionPhoto from '../assets/images/production-photo.jpg';
+const LUMBER_IMG = productionPhoto;
 
 export const PRODUCT_GROUPS = {
   all:       { ru: 'Все',              en: 'All',           by: 'Усе'              },

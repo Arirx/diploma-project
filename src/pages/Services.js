@@ -62,6 +62,12 @@ const WHY_ICONS = [
     <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
     <line x1="7" y1="7" x2="7.01" y2="7"/>
   </SVC>,
+  <SVC key="train">
+    <rect x="4" y="3" width="16" height="16" rx="2"/>
+    <path d="M4 11h16"/><path d="M12 3v8"/>
+    <circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/>
+    <path d="m8 19-2 3m10-3 2 3"/>
+  </SVC>,
 ];
 
 export default function Services() {

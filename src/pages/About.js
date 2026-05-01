@@ -13,9 +13,10 @@ import { ReactComponent as SettingsIcon  } from '../assets/icons/settings.svg';
 import { ReactComponent as TruckIcon     } from '../assets/icons/truck.svg';
 import { ReactComponent as PackageIcon   } from '../assets/icons/package.svg';
 import { ReactComponent as LayersIcon    } from '../assets/icons/layers.svg';
+import { ReactComponent as TrainIcon     } from '../assets/icons/train.svg';
 
 const VALUE_ICONS = [TrophyIcon, ShieldIcon, GlobeIcon, LeafIcon, LightbulbIcon, UsersIcon];
-const PROD_ICONS  = [WrenchIcon, FlameIcon, SettingsIcon, TruckIcon, PackageIcon, LayersIcon];
+const PROD_ICONS  = [WrenchIcon, FlameIcon, SettingsIcon, TruckIcon, PackageIcon, LayersIcon, TrainIcon];
 
 export default function About() {
   const { t } = useLanguage();

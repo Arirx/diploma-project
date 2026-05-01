@@ -3,6 +3,27 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
 
+const D = ({ children }) => (
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    {children}
+  </svg>
+);
+
+const METHOD_ICONS = [
+  <D key="truck"><rect x="1" y="3" width="15" height="12" rx="1"/><path d="M16 8h4l3 5v4h-7z"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/></D>,
+  <D key="warehouse"><path d="M2 20V8l10-6 10 6v12H2z"/><path d="M9 20v-6h6v6"/></D>,
+  <D key="train"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><circle cx="8" cy="17" r="1.5"/><circle cx="16" cy="17" r="1.5"/><path d="m8 19-2 3m10-3 2 3"/></D>,
+  <D key="globe"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></D>,
+];
+
+const PAYMENT_ICONS = [
+  <D key="card"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></D>,
+  <D key="banknote"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></D>,
+  <D key="globe2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></D>,
+  <D key="clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></D>,
+];
+
 function FaqItem({ q, a }) {
   const [open, setOpen] = useState(false);
   return (
@@ -44,7 +65,7 @@ export default function Delivery() {
           <div className="delivery-methods">
             {methods.map((m, i) => (
               <div className="delivery-method fade-up" key={i} style={{ transitionDelay:`${i*0.08}s` }}>
-                <div className="delivery-method__icon">{m.emoji}</div>
+                <div className="delivery-method__icon">{METHOD_ICONS[i]}</div>
                 <div className="delivery-method__title">{m.title}</div>
                 <p className="delivery-method__desc">{m.desc}</p>
                 <div className="delivery-method__features">
@@ -68,7 +89,7 @@ export default function Delivery() {
           <div className="payment-grid">
             {payments.map((p, i) => (
               <div className="payment-card fade-up" key={i} style={{ transitionDelay:`${i*0.08}s` }}>
-                <div className="payment-card__icon">{p.emoji}</div>
+                <div className="payment-card__icon">{PAYMENT_ICONS[i]}</div>
                 <div className="payment-card__title">{p.title}</div>
                 <p className="payment-card__text">{p.text}</p>
               </div>
