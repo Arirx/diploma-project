@@ -348,8 +348,8 @@ export default function Home() {
               <p className="section-subtitle">{t('home.contactSub')}</p>
               <div style={{ marginTop:36 }}>
                 {[
-                  { label:'Телефон',  val:'+375 (2354) 4-06-95' },
-                  { label:'Мобильный',val:'+375 33 324-20-10' },
+                  { label: 'Телефон', val: <a href='tel:+375333242010'>{'+375 33 324-20-10'}</a> },
+                  { label:'Email',    val: <a href='mailto:elskles.info@gmail.com'>{'elskles.info@gmail.com'}</a> },
                   { label:'Email',    val:'elskles.info@gmail.com' },
                   { label:'Работаем', val:'Пн–Пт: 8:00–17:00' },
                   { label:'Адрес',    val:'г. Ельск, Кочищанский тракт, 6к1' },

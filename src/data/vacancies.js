@@ -85,9 +85,9 @@ export const VACANCIES = [
       by: 'Будаўніцтва і тэхнічнае абслугоўванне вытворчых аб\'ектаў.',
     },
     requirements: {
-      ru: ['Опыт строительно-монтажных работ', 'Умение читать чертежи'],
-      en: ['Construction/installation experience', 'Ability to read technical drawings'],
-      by: ['Досвед будаўнічых работ', 'Уменне чытаць чарцяжы'],
+      ru: ['Опыт строительно-монтажных работ'],
+      en: ['Construction/installation experience'],
+      by: ['Досвед будаўнічых работ'],
     },
   },
   {
