@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
-import logoImg from '../assets/images/logo-header.png';
+import logoImg from '../assets/images/logo/logo-header.png';
 const LANGS = [
   { code: 'ru', label: 'RU' },
   { code: 'en', label: 'EN' },

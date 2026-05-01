@@ -14,8 +14,16 @@
  *   specs     – array of [key, value] specification rows (multilingual)
  */
 
-import productionPhoto from '../assets/images/production-photo.jpg';
-const LUMBER_IMG = productionPhoto;
+import sawnTimberBoardPhoto from '../assets/images/products/sawn-timber-board.jpg';
+import constructionBeamPhoto from '../assets/images/products/construction-beam.jpg';
+import woodenSleeperPhoto from '../assets/images/products/wooden-sleeper.jpg';
+import palletBoardPhoto from '../assets/images/products/pallet-board.jpg';
+import waneyEdgeSlabPhoto from '../assets/images/products/waney-edge-slab.jpg';
+import charcoalPhoto from '../assets/images/products/charcoal.jpg';
+import woodChipsPhoto from '../assets/images/products/wood-chips.jpg';
+import sawdustPhoto from '../assets/images/products/sawdust.jpg';
+import offcutsPhoto from '../assets/images/products/offcuts.jpg';
+
 
 export const PRODUCT_GROUPS = {
   all:       { ru: 'Все',              en: 'All',           by: 'Усе'              },
@@ -29,7 +37,7 @@ export const PRODUCTS = [
   {
     id: 'sawn-board',
     emoji: '🪵',
-    image: LUMBER_IMG,
+    image: sawnTimberBoardPhoto,
     thumbBg: '#E8DCC8',
     group: 'lumber',
     cat:   { ru: 'Пиломатериалы',    en: 'Lumber',           by: 'Піламатэрыялы'   },
@@ -48,7 +56,7 @@ export const PRODUCTS = [
   {
     id: 'beam',
     emoji: '📐',
-    image: LUMBER_IMG,
+    image: constructionBeamPhoto,
     thumbBg: '#DDD0B8',
     group: 'lumber',
     cat:   { ru: 'Пиломатериалы',    en: 'Lumber',          by: 'Піламатэрыялы'    },
@@ -59,15 +67,15 @@ export const PRODUCTS = [
       by: 'Будаўнічы брус з хваі для каркасных дамоў, перакрыццяў і стрэх.',
     },
     specs: {
-      ru: [['Порода', 'Сосна'], ['Сечение', '100×100, 100×150, 150×150, 200×200'], ['Длина', '3–6 м'], ['Влажность', 'Натуральная / Сухая']],
-      en: [['Species', 'Pine'], ['Section', '100×100, 100×150, 150×150, 200×200'], ['Length', '3–6 m'], ['Moisture', 'Natural / Dried']],
-      by: [['Парода', 'Хваёвая'], ['Перасек', '100×100, 100×150, 150×150, 200×200'], ['Даўжыня', '3–6 м']],
+      ru: [['Порода', 'Сосна'], ['Сечение', '100×100, 100×150, 150×150 и т.д.'], ['Длина', '3–6 м'], ['Влажность', 'Натуральная / Сухая']],
+      en: [['Species', 'Pine'], ['Section', '100×100, 100×150, 150×150 etc'], ['Length', '3–6 m'], ['Moisture', 'Natural / Dried']],
+      by: [['Парода', 'Хваёвая'], ['Перасек', '100×100, 100×150, 150×150 i г.д.'], ['Даўжыня', '3–6 м']],
     },
   },
   {
     id: 'sleeper',
     emoji: '🚂',
-    image: null,
+    image: woodenSleeperPhoto,
     thumbBg: '#C8B898',
     group: 'special',
     cat:   { ru: 'Специальные изделия', en: 'Special Products', by: 'Спецвырабы'    },
@@ -86,7 +94,7 @@ export const PRODUCTS = [
   {
     id: 'pallet-board',
     emoji: '📦',
-    image: LUMBER_IMG,
+    image: palletBoardPhoto,
     thumbBg: '#E0D4BC',
     group: 'lumber',
     cat:   { ru: 'Пиломатериалы',   en: 'Lumber',        by: 'Піламатэрыялы'   },
@@ -105,7 +113,7 @@ export const PRODUCTS = [
   {
     id: 'waney-slab',
     emoji: '🪨',
-    image: null,
+    image: waneyEdgeSlabPhoto,
     thumbBg: '#C8B890',
     group: 'byproduct',
     cat:   { ru: 'Отходы / сырьё', en: 'By-products', by: 'Адходы / сыравіна' },
@@ -124,7 +132,7 @@ export const PRODUCTS = [
   {
     id: 'charcoal',
     emoji: '🔥',
-    image: null,
+    image: charcoalPhoto,
     thumbBg: '#2A2A2A',
     group: 'fuel',
     cat:   { ru: 'Энергоносители',  en: 'Fuel',           by: 'Паліва'           },
@@ -143,7 +151,7 @@ export const PRODUCTS = [
   {
     id: 'wood-chips',
     emoji: '🌿',
-    image: null,
+    image: woodChipsPhoto,
     thumbBg: '#D8EAC8',
     group: 'byproduct',
     cat:   { ru: 'Отходы / сырьё',        en: 'By-products',         by: 'Адходы / сыравіна' },
@@ -162,7 +170,7 @@ export const PRODUCTS = [
   {
     id: 'sawdust',
     emoji: '🌾',
-    image: null,
+    image: sawdustPhoto,
     thumbBg: '#EDE8C0',
     group: 'byproduct',
     cat:   { ru: 'Отходы / сырьё', en: 'By-products', by: 'Адходы / сыравіна' },
@@ -181,7 +189,7 @@ export const PRODUCTS = [
   {
     id: 'offcuts',
     emoji: '✂️',
-    image: LUMBER_IMG,
+    image: offcutsPhoto,
     thumbBg: '#F0EAD8',
     group: 'byproduct',
     cat:   { ru: 'Отходы / сырьё', en: 'By-products', by: 'Адходы / сыравіна' },
