@@ -179,7 +179,7 @@ export default function Contacts() {
               <div className="staff-card fade-up" key={person.id} style={{ transitionDelay:`${i*0.05}s` }}>
                 <div className="staff-card__accent" />
                 <div className="staff-card__info">
-                  <div className="staff-card__name">{person.name}</div>
+                  <div className="staff-card__name">{l(person.name)}</div>
                   <div className="staff-card__pos">{l(person.position)}</div>
                   <a className="staff-card__phone" href={`tel:${person.phone.replace(/[\s\-()+]/g,'')}`}>
                     {person.phone}

@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { PRODUCTS } from '../data/products';
 import logoImg from '../assets/images/logo/logo-footer.png';
 import { ReactComponent as InstagramIcon } from '../assets/icons/components/instagram.svg';
 import { ReactComponent as WhatsAppIcon  } from '../assets/icons/components/whatsapp.svg';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, l } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
@@ -67,8 +68,9 @@ export default function Footer() {
           <div>
             <div className="footer__col-title">{t('footer.prod')}</div>
             <nav className="footer__links">
-              {['Доска обрезная','Брус строительный','Шпала деревянная','Паллетная доска','Уголь древесный','Щепа и опилки']
-                .map(item => <Link key={item} to="/products" className="footer__link">{item}</Link>)}
+              {PRODUCTS.map(p => (
+                <Link key={p.id} to="/products" className="footer__link">{l(p.title)}</Link>
+              ))}
             </nav>
           </div>
 
@@ -76,15 +78,15 @@ export default function Footer() {
           <div>
             <div className="footer__col-title">{t('footer.contact')}</div>
             <div className="footer__contact-item">
-              <span className="footer__contact-label">Адрес</span>
-              <span>г. Ельск, Кочищанский тракт, 6к1</span>
+              <span className="footer__contact-label">{t('contacts.address')}</span>
+              <span>{t('footer.address')}</span>
             </div>
             <div className="footer__contact-item">
-              <span className="footer__contact-label">Тел.</span>
+              <span className="footer__contact-label">{t('contacts.phone')}</span>
               <a href="tel:+375235440695">+375 (2354) 4-06-95</a>
             </div>
             <div className="footer__contact-item">
-              <span className="footer__contact-label">Моб.</span>
+              <span className="footer__contact-label">{t('contacts.mobile')}</span>
               <a href="tel:+375333242010">+375 33 324-20-10</a>
             </div>
             <div className="footer__contact-item">
@@ -92,7 +94,7 @@ export default function Footer() {
               <a href="mailto:elskles.info@gmail.com">elskles.info@gmail.com</a>
             </div>
             <div className="footer__contact-item">
-              <span className="footer__contact-label">Режим</span>
+              <span className="footer__contact-label">{t('contacts.workHours')}</span>
               <span>{t('footer.hours')}</span>
             </div>
           </div>

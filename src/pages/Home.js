@@ -320,11 +320,10 @@ export default function Home() {
               <p className="section-subtitle">{t('home.contactSub')}</p>
               <div style={{ marginTop:36 }}>
                 {[
-                  { label: 'Телефон', val: <a href='tel:+375333242010'>{'+375 33 324-20-10'}</a> },
-                  { label:'Email',    val: <a href='mailto:elskles.info@gmail.com'>{'elskles.info@gmail.com'}</a> },
-                  { label:'Email',    val:'elskles.info@gmail.com' },
-                  { label:'Работаем', val:'Пн–Пт: 8:00–17:00' },
-                  { label:'Адрес',    val:'г. Ельск, Кочищанский тракт, 6к1' },
+                  { label: t('contacts.phone'),     val: <a href='tel:+375333242010'>{'+375 33 324-20-10'}</a> },
+                  { label: 'Email',                 val: <a href='mailto:elskles.info@gmail.com'>{'elskles.info@gmail.com'}</a> },
+                  { label: t('contacts.workHours'), val: t('footer.hours') },
+                  { label: t('contacts.address'),   val: t('footer.address') },
                 ].map(({ label, val }) => (
                   <div className="contact-form-info__item" key={label}>
                     <div className="contact-form-info__dot" />

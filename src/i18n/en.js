@@ -50,6 +50,7 @@ const en = {
     contact: 'Contacts',
     rights:  'All rights reserved.',
     hours:   'Mon–Fri: 8:00–17:00',
+    address: 'Elsk, Kochishchansky tract 6k1',
   },
   home: {
     heroTag:   'Belarus · Export to 8 countries',
@@ -165,9 +166,8 @@ const en = {
     benefitsLabel:'Benefits',
     benefitsTitle:'What we offer',
     benefitsSub:  'We care about every employee',
-    ctaTitle:    'Didn\'t find a suitable vacancy?',
-    ctaSub:      'Send your CV — we\'ll consider you for future openings',
-    ctaBtn:      'Send CV',
+    ctaTitle:    'Want to join our team?',
+    ctaSub:      'Contact our HR Inspector by phone:',
     noReqs:      'No specific requirements. Everyone is welcome!',
   },
   delivery: {

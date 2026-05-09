@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import useFadeUp from '../hooks/useFadeUp';
 import { VACANCIES, BENEFITS } from '../data/vacancies';
@@ -127,7 +126,7 @@ export default function Vacancies() {
               <div className="cta-banner__sub">{t('vacancies.ctaSub')}</div>
             </div>
             <div className="cta-banner__actions">
-              <Link to="/contacts" className="btn btn--white btn--lg">{t('vacancies.ctaBtn')}</Link>
+              <a href="tel:+375333242010" className="btn btn--white btn--lg">+375 33 324-20-10</a>
             </div>
           </div>
         </div>
