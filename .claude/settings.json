@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(PGPASSWORD=12345678 \"C:/Program Files/PostgreSQL/18/bin/psql.exe\" -U postgres -c \"CREATE DATABASE elskles ENCODING 'UTF8' LC_COLLATE 'Russian_Russia.1251' LC_CTYPE 'Russian_Russia.1251' TEMPLATE template0;\")",
+      "Bash(PGPASSWORD=12345678 \"C:/Program Files/PostgreSQL/18/bin/psql.exe\" -U postgres -d elskles -f \"d:/диплом/diploma-project/db/init.sql\")",
+      "Bash(node server/index.js)",
+      "Bash(curl -s http://localhost:5000/api/inquiries)",
+      "Bash(python -m json.tool)",
+      "Bash(pkill -f \"node server/index.js\")",
+      "Bash(taskkill //PID 12132 //F)"
+    ]
+  }
+}

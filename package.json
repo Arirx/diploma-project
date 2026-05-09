@@ -14,11 +14,14 @@
     "react-simple-maps": "^3.0.0",
     "web-vitals": "^2.1.4"
   },
+  "proxy": "http://localhost:5000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "node server/index.js",
+    "server:dev": "nodemon server/index.js"
   },
   "eslintConfig": {
     "extends": [

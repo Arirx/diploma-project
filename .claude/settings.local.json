@@ -11,7 +11,10 @@
       "Bash(curl -L -o \"d:/диплом/diploma-project/src/assets/images/production-photo.jpg\" \"https://elskles.by/img/450x600/a44f89221fb4991cf53a5eca0c3cdf8a.jpg\")",
       "WebFetch(domain:yandex.ru)",
       "WebFetch(domain:2gis.by)",
-      "WebFetch(domain:2gis.ru)"
+      "WebFetch(domain:2gis.ru)",
+      "Bash(\"C:/Program Files/PostgreSQL/18/bin/psql.exe\" --version)",
+      "Bash(\"C:/Program Files/PostgreSQL/18/bin/pg_ctl.exe\" status -D \"C:/Program Files/PostgreSQL/18/data\")",
+      "Bash(\"C:/Program Files/PostgreSQL/18/bin/pg_ctl.exe\" start -D \"C:/Program Files/PostgreSQL/18/data\" -l \"C:/Program Files/PostgreSQL/18/data/pg_log/startup.log\")"
     ]
   }
 }

@@ -15,14 +15,38 @@ const YANDEX_ROUTE = 'https://yandex.ru/maps/?ll=33.724814%2C53.946479&mode=rout
 
 function ContactForm() {
   const { t } = useLanguage();
-  const [sent, setSent] = useState(false);
+  const [sent,    setSent]    = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error,   setError]   = useState('');
   const [form, setForm] = useState({ name:'', phone:'', email:'', subject:'', message:'' });
   const onChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
   if (sent) return <div className="form__success" style={{ padding:32 }}>{t('form.success')}</div>;
 
+  const onSubmit = async e => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Ошибка отправки');
+      }
+      setSent(true);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <form className="form" onSubmit={e => { e.preventDefault(); setSent(true); }}>
+    <form className="form" onSubmit={onSubmit}>
       <h3 style={{ fontFamily:'var(--font-head)', fontSize:20, fontWeight:800, marginBottom:20 }}>
         {t('nav.write')}
       </h3>
@@ -51,8 +75,11 @@ function ContactForm() {
         <label className="form__label">{t('form.message')} *</label>
         <textarea className="form__textarea" name="message" value={form.message} onChange={onChange} placeholder={t('form.messagePh')} rows={5} required />
       </div>
+      {error && <p style={{ color:'#dc2626', fontSize:13, margin:'0 0 8px' }}>{error}</p>}
       <p className="form__note">{t('form.note')}</p>
-      <button type="submit" className="btn btn--primary">{t('common.sendMessage')}</button>
+      <button type="submit" className="btn btn--primary" disabled={loading}>
+        {loading ? '...' : t('common.sendMessage')}
+      </button>
     </form>
   );
 }
