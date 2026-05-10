@@ -41,7 +41,7 @@ const en = {
     note:      'By clicking Send you agree to the processing of personal data.',
     success:   '✅ Message sent! We will get back to you during business hours (Mon–Fri 8:00–17:00).',
     sendMessage:    'Leave a Request',
-    topics: ['Lumber enquiry', 'Transport services', 'Partnership / export', 'Vacancies', 'Other'],
+    topics: ['Lumber enquiry', 'Transport services', 'Partnership / export', 'Other'],
   },
   footer: {
     desc:    'Reliable timber supplier from Belarus since 2010. Exporting to 8 countries.',
@@ -123,7 +123,7 @@ const en = {
     ],
     production: [
       { emoji: '🪚', title: 'Sawmill',            text: 'Modern sawing and primary timber processing equipment.' },
-      { emoji: '🔥', title: 'Drying chambers',    text: 'Italian industrial chambers. Drying to 8–22% moisture per spec.' },
+      { emoji: '🔥', title: 'Drying chambers',    text: 'Italian electronically controlled drying chambers. Precise drying to any target moisture level on request.' },
       { emoji: '🚜', title: 'Amkodor machinery',  text: 'Belarusian-made loading and handling equipment.' },
       { emoji: '🚛', title: 'Vehicle fleet',      text: 'Heavy trucks for timber and bulk materials transport.' },
       { emoji: '📦', title: 'Finished goods warehouse', text: 'Covered warehouse. Storage until dispatch.' },
@@ -213,6 +213,8 @@ const en = {
     address:     'Address',
     addressVal:  'Elsk, Kochishchansky tract 6k1, 247792, Gomel Oblast, Belarus',
     phone:       'Phone',
+    phoneDir:    'Director, Deputy Director',
+    phoneAcc:    'Accounting',
     mobile:      'Mobile / WhatsApp',
     workHours:   'Working hours',
     workHoursVal:'Mon–Fri: 8:00–17:00 / Sat, Sun: closed',

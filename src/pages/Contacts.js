@@ -125,8 +125,8 @@ export default function Contacts() {
                   <div>
                     <div className="contact-info-row__label">{t('contacts.phone')}</div>
                     <div className="contact-info-row__value">
-                      <a href="tel:+375235440695">+375 (2354) 4-06-95 — директор, зам. директора</a><br />
-                      <a href="tel:+375235443328">+375 (2354) 4-43-28 — бухгалтерия </a>
+                      <a href="tel:+375235440695">+375 (2354) 4-06-95 — {t('contacts.phoneDir')}</a><br />
+                      <a href="tel:+375235443328">+375 (2354) 4-43-28 — {t('contacts.phoneAcc')}</a>
                     </div>
                   </div>
                 </div>

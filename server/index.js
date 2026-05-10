@@ -18,23 +18,11 @@ app.post('/api/inquiries', async (req, res) => {
   }
 
   try {
-    let subject_id = null;
-
-    if (subject) {
-      const found = await pool.query(
-        `SELECT id FROM inquiry_subjects
-         WHERE name ILIKE $1
-         ORDER BY id LIMIT 1`,
-        [`%${subject.split('/')[0].trim()}%`]
-      );
-      if (found.rows.length) subject_id = found.rows[0].id;
-    }
-
     const result = await pool.query(
-      `INSERT INTO inquiries (subject_id, name, phone, email, message)
+      `INSERT INTO inquiries (name, phone, email, subject, message)
        VALUES ($1, $2, $3, $4, $5)
        RETURNING id, created_at`,
-      [subject_id, name.trim(), phone.trim(), email?.trim() || null, message.trim()]
+      [name.trim(), phone.trim(), email?.trim() || null, subject?.trim() || null, message.trim()]
     );
 
     res.status(201).json({ ok: true, id: result.rows[0].id });
@@ -54,12 +42,13 @@ app.get('/api/inquiries', async (req, res) => {
          i.name,
          i.phone,
          i.email,
+         i.subject,
          i.message,
          i.status,
          i.created_at,
-         s.name AS subject
+         m.full_name AS manager
        FROM inquiries i
-       LEFT JOIN inquiry_subjects s ON i.subject_id = s.id
+       LEFT JOIN managers m ON i.manager_id = m.id
        ORDER BY i.created_at DESC`
     );
     res.json(result.rows);
