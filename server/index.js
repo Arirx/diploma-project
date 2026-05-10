@@ -97,6 +97,15 @@ app.patch('/api/inquiries/:id', async (req, res) => {
 });
 
 const PORT = process.env.SERVER_PORT || 5000;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Сервер запущен: http://localhost:${PORT}`);
+});
+
+server.on('error', err => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\nПорт ${PORT} уже занят. Останови предыдущий процесс:\n  Get-Process -Id (Get-NetTCPConnection -LocalPort ${PORT}).OwningProcess | Stop-Process -Force\n`);
+    process.exit(1);
+  } else {
+    throw err;
+  }
 });

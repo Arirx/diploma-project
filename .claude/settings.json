@@ -8,7 +8,12 @@
       "Bash(curl -s http://localhost:5000/api/inquiries)",
       "Bash(python -m json.tool)",
       "Bash(pkill -f \"node server/index.js\")",
-      "Bash(taskkill //PID 12132 //F)"
+      "Bash(taskkill //PID 12132 //F)",
+      "Bash(curl -s -X POST http://localhost:5000/api/inquiries -H 'Content-Type: application/json' -d '{\"name\":\"Тест\",\"phone\":\"+375 29 000-00-00\",\"message\":\"Проверка подключения\"}')",
+      "Bash(PGPASSWORD=12345678 \"C:/Program Files/PostgreSQL/18/bin/psql.exe\" -U postgres -d elskles -c \"SELECT id, name, phone, message, status, created_at FROM inquiries ORDER BY id DESC LIMIT 3;\")",
+      "Bash(python -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f'id={r[\\\\\"id\\\\\"]} | {r[\\\\\"name\\\\\"]} | {r[\\\\\"status\\\\\"]}'\\) for r in data]\")",
+      "Bash(PGPASSWORD=12345678 \"C:/Program Files/PostgreSQL/18/bin/psql.exe\" -U postgres -d elskles -c \"DELETE FROM inquiries WHERE id = 6;\")",
+      "Bash(timeout 12 npm start)"
     ]
   }
 }
