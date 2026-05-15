@@ -13,7 +13,16 @@
       "Bash(PGPASSWORD=12345678 \"C:/Program Files/PostgreSQL/18/bin/psql.exe\" -U postgres -d elskles -c \"SELECT id, name, phone, message, status, created_at FROM inquiries ORDER BY id DESC LIMIT 3;\")",
       "Bash(python -c \"import sys,json; data=json.load\\(sys.stdin\\); [print\\(f'id={r[\\\\\"id\\\\\"]} | {r[\\\\\"name\\\\\"]} | {r[\\\\\"status\\\\\"]}'\\) for r in data]\")",
       "Bash(PGPASSWORD=12345678 \"C:/Program Files/PostgreSQL/18/bin/psql.exe\" -U postgres -d elskles -c \"DELETE FROM inquiries WHERE id = 6;\")",
-      "Bash(timeout 12 npm start)"
+      "Bash(timeout 12 npm start)",
+      "Read(//c/Users/Кирилл/Downloads/**)",
+      "Read(//c/Users/Кирилл/**)",
+      "Read(//d/диплом/**)",
+      "Bash(python -c \"import pdfplumber; pdf = pdfplumber.open\\(r'd:\\\\диплом\\\\Диплом пример.pdf'\\); [print\\(f'--- PAGE {i+1} ---\\\\n{p.extract_text\\(\\)}'\\) for i, p in enumerate\\(pdf.pages[15:35]\\)]\")",
+      "Bash(python -c \"import fitz; doc = fitz.open\\(r'd:\\\\диплом\\\\Диплом пример.pdf'\\); [print\\(f'--- PAGE {i+1} ---\\\\n{doc[i].get_text\\(\\)}'\\) for i in range\\(15, 35\\)]\")",
+      "Bash(python -c ' *)",
+      "Bash(Get-Command python *)",
+      "Bash(Get-Command python3 *)",
+      "Bash(Get-Command py *)"
     ]
   }
 }

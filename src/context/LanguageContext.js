@@ -7,8 +7,20 @@ const TRANSLATIONS = { ru, en, by };
 
 const LanguageContext = createContext(null);
 
+const SUPPORTED = ['ru', 'en', 'by'];
+
+function getInitialLang() {
+  const saved = localStorage.getItem('lang');
+  return SUPPORTED.includes(saved) ? saved : 'ru';
+}
+
 export function LanguageProvider({ children }) {
-  const [lang, setLang] = useState('ru');
+  const [lang, setLangState] = useState(getInitialLang);
+
+  function setLang(newLang) {
+    localStorage.setItem('lang', newLang);
+    setLangState(newLang);
+  }
 
   /** Resolve a dotted key, e.g. t('nav.home') */
   function t(key) {
