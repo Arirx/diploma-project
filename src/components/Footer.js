@@ -77,17 +77,27 @@ export default function Footer() {
           {/* Contacts */}
           <div>
             <div className="footer__col-title">{t('footer.contact')}</div>
-            <div className="footer__contact-item">
+            <div className="footer__contact-item footer__contact-item--top">
               <span className="footer__contact-label">{t('contacts.address')}</span>
-              <span>{t('footer.address')}</span>
+              <span className="footer__address">
+                <span>{t('footer.addressCity')}</span>
+                <span>{t('footer.addressStreet')}</span>
+              </span>
             </div>
             <div className="footer__contact-item">
               <span className="footer__contact-label">{t('contacts.phone')}</span>
               <a href="tel:+375235440695">+375 (2354) 4-06-95</a>
             </div>
-            <div className="footer__contact-item">
-              <span className="footer__contact-label">{t('contacts.mobile')}</span>
-              <a href="tel:+375333242010">+375 33 324-20-10</a>
+            <div className="footer__contact-item footer__contact-item--wa">
+              <div className="footer__wa-labels">
+                <span className="footer__contact-label">{t('contacts.mobileLabel')}</span>
+                <span className="footer__contact-label footer__contact-label--wa">
+                  WhatsApp
+                </span>
+              </div>
+              <a href="https://wa.me/375333242010" target="_blank" rel="noopener noreferrer">
+                +375 33 324-20-10
+              </a>
             </div>
             <div className="footer__contact-item">
               <span className="footer__contact-label">Email</span>

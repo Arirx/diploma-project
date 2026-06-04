@@ -422,13 +422,18 @@ ul, ol { list-style: none; }
   display: flex; align-items: baseline; gap: 10px;
   margin-bottom: 10px; font-size: 14px; color: rgba(255,255,255,0.72);
 }
+.footer__contact-item--top { align-items: flex-start; }
 .footer__contact-item a { color: rgba(255,255,255,0.72); transition: var(--transition); }
 .footer__contact-item a:hover { color: var(--clr-orange); }
+.footer__address { display: flex; flex-direction: column; gap: 2px; }
+.footer__contact-item--wa { align-items: center; }
+.footer__wa-labels { display: flex; flex-direction: column; gap: 6px; }
 .footer__contact-label {
   font-size: 11px; font-weight: 700; color: var(--clr-orange);
   text-transform: uppercase; letter-spacing: 0.5px;
   flex-shrink: 0; min-width: 42px;
 }
+.footer__contact-label--wa { display: flex; align-items: center; gap: 4px; }
 
 .footer__bottom {
   margin-top: 56px; padding: 20px 0;
