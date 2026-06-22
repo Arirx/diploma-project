@@ -7,7 +7,7 @@
 export const VACANCIES = [
   {
     id: 'driver',
-    title:    { ru: 'Водитель',      en: 'Driver',          by: 'Кіроўца'          },
+    title:    { ru: 'Водитель автомобиля', en: 'Car Driver', by: 'Кіроўца аўтамабіля' },
     type:     { ru: 'Полная занятость', en: 'Full-time',     by: 'Поўная занятасць' },
     location: { ru: 'г. Ельск',      en: 'Elsk, Belarus',   by: 'г. Ельск'         },
     category: { ru: 'Транспорт',     en: 'Transport',       by: 'Транспарт'        },
@@ -24,7 +24,7 @@ export const VACANCIES = [
   },
   {
     id: 'boiler-operator',
-    title:    { ru: 'Машинист котельной',   en: 'Boiler Operator',  by: 'Машыніст кацельні'   },
+    title:    { ru: 'Машинист (кочегар) котельной', en: 'Boiler Operator (Stoker)', by: 'Машыніст (качагар) кацельні' },
     type:     { ru: 'Полная занятость',     en: 'Full-time',        by: 'Поўная занятасць'    },
     location: { ru: 'г. Ельск',            en: 'Elsk, Belarus',    by: 'г. Ельск'             },
     category: { ru: 'Производство',         en: 'Production',       by: 'Вытворчасць'         },
@@ -41,7 +41,7 @@ export const VACANCIES = [
   },
   {
     id: 'tractor-driver',
-    title:    { ru: 'Тракторист',           en: 'Tractor Operator', by: 'Трактарыст'           },
+    title:    { ru: 'Тракторист на подготовке лесосек, трелёвке, вывозке леса', en: 'Tractor Operator – Forest Clearing, Skidding & Haulage', by: 'Трактарыст на падрыхтоўцы лесасек, трэлёўцы, вывазцы лесу' },
     type:     { ru: 'Полная занятость',     en: 'Full-time',        by: 'Поўная занятасць'    },
     location: { ru: 'г. Ельск / Лесной массив', en: 'Elsk / Forest', by: 'г. Ельск / Лес'      },
     category: { ru: 'Заготовка',            en: 'Timber Harvesting','by': 'Нарыхтоўка'         },
@@ -58,7 +58,7 @@ export const VACANCIES = [
   },
   {
     id: 'machine-operator',
-    title:    { ru: 'Станочник',            en: 'Machine Operator', by: 'Станочнік'            },
+    title:    { ru: 'Станочник деревообрабатывающих станков', en: 'Woodworking Machine Operator', by: 'Станочнік дрэваапрацоўчых станкоў' },
     type:     { ru: 'Полная занятость',     en: 'Full-time',        by: 'Поўная занятасць'    },
     location: { ru: 'г. Ельск',            en: 'Elsk, Belarus',    by: 'г. Ельск'             },
     category: { ru: 'Производство',         en: 'Production',       by: 'Вытворчасць'         },
@@ -75,7 +75,7 @@ export const VACANCIES = [
   },
   {
     id: 'builder',
-    title:    { ru: 'Строитель (монтажник)',  en: 'Builder / Installer', by: 'Будаўнік (мантажнік)' },
+    title:    { ru: 'Рабочий по комплексному обслуживанию и ремонту зданий и сооружений (строитель)', en: 'Building & Facility Maintenance Worker', by: 'Рабочы па комплексным абслугоўванні і рамонце будынкаў і збудаванняў' },
     type:     { ru: 'Полная занятость',       en: 'Full-time',           by: 'Поўная занятасць'     },
     location: { ru: 'г. Ельск',              en: 'Elsk, Belarus',       by: 'г. Ельск'              },
     category: { ru: 'Строительство',          en: 'Construction',        by: 'Будаўніцтва'          },
