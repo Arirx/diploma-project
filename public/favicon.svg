@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Фон -->
+  <rect width="32" height="32" rx="6" fill="#1A2332"/>
+  <!-- Крона (верх) -->
+  <polygon points="16,4 24,16 8,16" fill="#F07500"/>
+  <!-- Крона (низ, чуть шире) -->
+  <polygon points="16,10 26,24 6,24" fill="#E06800"/>
+  <!-- Ствол -->
+  <rect x="14" y="23" width="4" height="5" rx="1" fill="#C4A882"/>
+</svg>

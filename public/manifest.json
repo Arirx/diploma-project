@@ -1,6 +1,12 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "ООО «Ельсклес» — Пиломатериалы",
+  "short_name": "Ельсклес",
+  "description": "Производство и продажа пиломатериалов из Беларуси",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#F07500",
+  "background_color": "#1A2332",
+  "lang": "ru-BY",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +14,10 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }

@@ -2,18 +2,96 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#F07500" />
-    <meta name="description" content="ООО «Ельсклес» — ваш надёжный поставщик пиломатериалов. Производство и экспорт лесных ресурсов из Беларуси." />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- ── Верификация поисковиков ─────────────────────────── -->
+    <meta name="yandex-verification" content="8f18e19aef1d6ab4" />
+    <meta name="google-site-verification" content="Niy-z-YBi8IMhgkuvY7ou2N-HHYiEkE74E9LdW2SVWA" />
+
+    <!-- ── SEO: описание и ключевые слова ─────────────────── -->
+    <meta name="description" content="ООО «Ельсклес» — производство и продажа пиломатериалов из Беларуси. Доска обрезная, брус, промышленная сушка, доставка по РБ и СНГ, экспорт в 8 стран. г. Ельск, Гомельская обл." />
+    <meta name="keywords" content="пиломатериалы Беларусь, доска обрезная купить, брус строительный, сушка пиломатериалов, экспорт пиломатериалов, ООО Ельсклес, лесоматериалы, щепа, шпала деревянная, Ельск, Гомельская область, пиломатериалы оптом" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://elskles.by/" />
+
+    <!-- ── Open Graph (соцсети, мессенджеры) ─────────────── -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://elskles.by/" />
+    <meta property="og:site_name"   content="ООО «Ельсклес»" />
+    <meta property="og:locale"      content="ru_BY" />
+    <meta property="og:title"       content="ООО «Ельсклес» — Пиломатериалы из Беларуси" />
+    <meta property="og:description" content="Производство и продажа пиломатериалов. Доска обрезная, брус, промышленная сушка. Доставка по РБ, СНГ и экспорт в 8 стран." />
+    <meta property="og:image"       content="https://elskles.by/og-image.png" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- ── Twitter / Telegram превью ─────────────────────── -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="ООО «Ельсклес» — Пиломатериалы из Беларуси" />
+    <meta name="twitter:description" content="Производство и продажа пиломатериалов. Доска обрезная, брус, промышленная сушка. Экспорт в 8 стран." />
+    <meta name="twitter:image"       content="https://elskles.by/og-image.png" />
+
+    <!-- ── Favicon ───────────────────────────────────────── -->
+    <link rel="icon"             href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
+    <link rel="icon"             href="%PUBLIC_URL%/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest"         href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- ── Шрифты ────────────────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
     <title>ООО «Ельсклес» — Пиломатериалы, Беларусь</title>
+
+    <!-- ── JSON-LD: структурированные данные ─────────────── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "ООО «Ельсклес»",
+      "url": "https://elskles.by",
+      "logo": "https://elskles.by/favicon.svg",
+      "image": "https://elskles.by/og-image.png",
+      "description": "Производство и продажа пиломатериалов из Беларуси. Промышленная сушка, доставка по РБ и СНГ, экспорт в 8 стран.",
+      "telephone": ["+375235440695", "+375333242010"],
+      "email": "elskles.info@gmail.com",
+      "foundingDate": "2010",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Кочищанский тракт, 6к1",
+        "addressLocality": "Ельск",
+        "postalCode": "247792",
+        "addressRegion": "Гомельская область",
+        "addressCountry": "BY"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "https://www.instagram.com/elskles.by"
+      ]
+    }
+    </script>
+
+    <!-- ── Яндекс.Метрика ─────────────────────────────────── -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date();
+      for(var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+      (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+      ym(102716961,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true});
+    </script>
   </head>
   <body>
+    <noscript>
+      <div><img src="https://mc.yandex.ru/watch/102716961" style="position:absolute;left:-9999px" alt="" /></div>
+    </noscript>
     <noscript>Для работы сайта необходим JavaScript.</noscript>
     <div id="root"></div>
   </body>
