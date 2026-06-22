@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
 import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -42,10 +43,12 @@ function AppInner() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <BrowserRouter>
-        <AppInner />
-      </BrowserRouter>
-    </LanguageProvider>
+    <HelmetProvider>
+      <LanguageProvider>
+        <BrowserRouter>
+          <AppInner />
+        </BrowserRouter>
+      </LanguageProvider>
+    </HelmetProvider>
   );
 }

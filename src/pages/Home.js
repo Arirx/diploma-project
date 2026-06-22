@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 import useFadeUp from '../hooks/useFadeUp';
 import {
   PARTNER_COUNTRIES,
@@ -193,6 +194,7 @@ export default function Home() {
 
   return (
     <>
+      <SEOHead page="home" />
       {/* ── HERO ─────────────────────────────── */}
       <section className="hero">
         <div className="hero__bg-pattern" />

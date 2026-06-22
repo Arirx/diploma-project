@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 import useFadeUp from '../hooks/useFadeUp';
 import { PRODUCTS, PRODUCT_GROUPS } from '../data/products';
 
@@ -13,6 +14,7 @@ export default function Products() {
 
   return (
     <>
+      <SEOHead page="products" />
       {/* ── PAGE HERO ──────────────────────── */}
       <section className="page-hero gray-after">
         <div className="container">

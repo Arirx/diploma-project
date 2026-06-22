@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 import useFadeUp from '../hooks/useFadeUp';
 import { ReactComponent as TrophyIcon    } from '../assets/icons/about/values/trophy.svg';
 import { ReactComponent as ShieldIcon    } from '../assets/icons/about/values/shield.svg';
@@ -28,6 +29,7 @@ export default function About() {
 
   return (
     <>
+      <SEOHead page="about" />
       <section className="page-hero">
         <div className="container">
           <div className="section-label">{t('about.heroLabel')}</div>

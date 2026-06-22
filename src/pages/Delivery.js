@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 import useFadeUp from '../hooks/useFadeUp';
 import { ReactComponent as TruckIcon     } from '../assets/icons/delivery/methods/truck.svg';
 import { ReactComponent as WarehouseIcon } from '../assets/icons/delivery/methods/warehouse.svg';
@@ -37,6 +38,7 @@ export default function Delivery() {
 
   return (
     <>
+      <SEOHead page="delivery" />
       <section className="page-hero">
         <div className="container">
           <div className="section-label">{t('delivery.heroLabel')}</div>

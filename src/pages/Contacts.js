@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 import useFadeUp from '../hooks/useFadeUp';
 import { STAFF } from '../data/staff';
 import { ReactComponent as MapPinIcon    } from '../assets/icons/contacts/map-pin.svg';
@@ -90,6 +91,7 @@ export default function Contacts() {
 
   return (
     <>
+      <SEOHead page="contacts" />
       {/* ── PAGE HERO ──────────────────────── */}
       <section className="page-hero">
         <div className="container">

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 import useFadeUp from '../hooks/useFadeUp';
 import { SERVICES } from '../data/services';
 import { ReactComponent as ZapIcon      } from '../assets/icons/services/why/zap.svg';
@@ -31,6 +32,7 @@ export default function Services() {
 
   return (
     <>
+      <SEOHead page="services" />
       <section className="page-hero">
         <div className="container">
           <div className="section-label">{t('services.heroLabel')}</div>

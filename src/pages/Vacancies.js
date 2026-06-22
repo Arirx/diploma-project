@@ -1,4 +1,5 @@
 import { useLanguage } from '../context/LanguageContext';
+import SEOHead from '../components/SEOHead';
 import useFadeUp from '../hooks/useFadeUp';
 import { VACANCIES, BENEFITS } from '../data/vacancies';
 import { ReactComponent as ClipboardIcon  } from '../assets/icons/vacancies/clipboard.svg';
@@ -17,6 +18,7 @@ export default function Vacancies() {
 
   return (
     <>
+      <SEOHead page="vacancies" />
       {/* ── PAGE HERO ──────────────────────── */}
       <section className="page-hero">
         <div className="container">
