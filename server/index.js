@@ -4,8 +4,16 @@ const cors    = require('cors');
 const pool    = require('./db');
 
 const app = express();
+
+const CORS_ORIGINS = ['http://localhost:3000', 'https://elskles.by'];
+const corsOptions  = {
+  origin: CORS_ORIGINS,
+  methods: ['GET', 'POST', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // preflight
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:3000' }));
 
 /* ─── POST /api/inquiries ────────────────────────────────────
    Сохраняет заявку с сайта в таблицу inquiries.
@@ -62,21 +70,17 @@ app.get('/api/inquiries', async (req, res) => {
    Обновляет статус заявки: new → read → done              */
 app.patch('/api/inquiries/:id', async (req, res) => {
   const { id } = req.params;
-  const { status, processed_by } = req.body;
+  const { status, manager_id } = req.body;
 
-  const allowed = ['new', 'read', 'done'];
+  const allowed = ['new', 'read', 'in_work', 'done'];
   if (!allowed.includes(status)) {
     return res.status(400).json({ error: 'Недопустимый статус.' });
   }
 
   try {
     await pool.query(
-      `UPDATE inquiries
-       SET status = $1,
-           processed_by = $2,
-           processed_at = CASE WHEN $1 = 'done' THEN NOW() ELSE processed_at END
-       WHERE id = $3`,
-      [status, processed_by || null, id]
+      `UPDATE inquiries SET status = $1, manager_id = $2 WHERE id = $3`,
+      [status, manager_id || null, id]
     );
     res.json({ ok: true });
   } catch (err) {
