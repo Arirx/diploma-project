@@ -1,7 +1,25 @@
 require('dotenv').config({ path: require('path').join(__dirname, '../.env') });
 const express = require('express');
 const cors    = require('cors');
+const https   = require('https');
 const pool    = require('./db');
+
+function sendTelegram(text) {
+  const token  = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!token || !chatId) return;
+
+  const body = JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' });
+  const req  = https.request({
+    hostname: 'api.telegram.org',
+    path:     `/bot${token}/sendMessage`,
+    method:   'POST',
+    headers:  { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) },
+  });
+  req.on('error', err => console.error('Telegram error:', err.message));
+  req.write(body);
+  req.end();
+}
 
 const app = express();
 
@@ -33,7 +51,21 @@ app.post('/api/inquiries', async (req, res) => {
       [name.trim(), phone.trim(), email?.trim() || null, subject?.trim() || null, message.trim()]
     );
 
-    res.status(201).json({ ok: true, id: result.rows[0].id });
+    const { id, created_at } = result.rows[0];
+
+    const msg = [
+      `<b>Новая заявка #${id}</b>`,
+      `Имя: ${name.trim()}`,
+      `Телефон: ${phone.trim()}`,
+      email?.trim() ? `Email: ${email.trim()}` : null,
+      subject?.trim() ? `Тема: ${subject.trim()}` : null,
+      `Сообщение: <i>${message.trim()}</i>`,
+      `${new Date(created_at).toLocaleString('ru-RU', { timeZone: 'Europe/Minsk' })}`,
+    ].filter(Boolean).join('\n');
+
+    sendTelegram(msg);
+
+    res.status(201).json({ ok: true, id });
   } catch (err) {
     console.error('Ошибка при сохранении заявки:', err.message);
     res.status(500).json({ error: 'Внутренняя ошибка сервера.' });
