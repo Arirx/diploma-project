@@ -1,5 +1,5 @@
 const TOKEN   = '8838834177:AAFzG3FGJLRimOB7v34lpGD2LGn04lX8MiM';
-const CHAT_ID = '-5118431981';
+const CHAT_ID = '-1004489194614';
 
 export async function sendTelegramInquiry({ name, phone, email, subject, message }) {
   const text = [
