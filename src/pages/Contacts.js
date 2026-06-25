@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { sendTelegramInquiry } from '../utils/telegram';
 import SEOHead from '../components/SEOHead';
 import useFadeUp from '../hooks/useFadeUp';
 import { STAFF } from '../data/staff';
@@ -29,15 +30,7 @@ function ContactForm() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/inquiries', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || 'Ошибка отправки');
-      }
+      await sendTelegramInquiry(form);
       setSent(true);
     } catch (err) {
       setError(err.message);
